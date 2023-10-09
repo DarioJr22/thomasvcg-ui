@@ -1,0 +1,35 @@
+<div  *ngIf="dados.type == 'ATUACAO' " class="widthDelimiter">
+  <div class="slideWrapper">
+    <div class="keen-slider" #sliderRef>
+      <section [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'" *ngFor="let i of dados.content; index as y" class="keen-slider__slide cardAreaAtuacao">
+       <header>
+        <img [src]="i.header" alt="icon">
+       </header>
+       <article class="titulo">
+        {{i.main}}
+       </article>
+       <article class="descricao">
+        {{i.footer}}
+       </article>
+       <button class="button_multicards">
+        Contate um advogado
+       </button>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div  *ngIf="dados.type == 'DEPOIMENTO' " class="widthDelimiter">
+  <div class="slideWrapper">
+    <div class="keen-slider" #sliderRef>
+      <section
+      [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'"
+      *ngFor="let i of dados.content; index as y"
+      class="keen-slider__slide cardDepoimentoHome">
+       <article class="titulo">
+        {{i.main}}
+       </article>
+      </section>
+    </div>
+  </div>
+</div>

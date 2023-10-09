@@ -1,0 +1,121 @@
+// PrimaryColors
+$background-overlay:#27272767;
+
+//AccentColors
+$accent-colors:#0D90C2;
+
+// Feedback colors
+$warn-default: #D63333;
+$warn-darker: #852020;
+$warn-light: #F5EBEB;
+
+//Background
+$background-white: #FFFFFF;
+$background-grey-4: #F5F5F5;
+$background-grey-8: #EBEBEB;
+$background-grey-20: #CCCCCC;
+$background-grey-40: #999999;
+$background-grey-60: #666666;
+$background-black: #CCCCCC;
+
+
+//Palete
+$kz-palette-blue:(
+  50:#062479,
+  100:#062479,
+  200:#062479,
+  300:#1838AC,
+  400:#1838AC,
+  500:#1838AC,
+  600:#1838AC,
+  700:#224EE8,
+  800:#224EE8,
+  900:#224EE8,
+  A100:#54E3F7,
+  A200:#54E3F7,
+  contrast:(
+    50:$background-black,
+    100:$background-black,
+    200:$background-black,
+    300:$background-black,
+    400:$background-black,
+    500:$background-black,
+    600:$background-black,
+    700:$background-black,
+    800:$background-grey-4,
+    900:$background-grey-4,
+    A100:$background-grey-4,
+    A200:$background-grey-4,
+  )
+);
+
+
+
+$kz-palette-red:(
+  50:#990303,
+  100:#990303,
+  200:#990303,
+  300:#D00000,
+  400:#D00000,
+  500:#FF3D00,
+  600:#FF3D00,
+  700:#FFA800,
+  800:#FFA800,
+  900:#FFA800,
+  A100:#FFD600,
+  A200:#FFD600,
+  contrast:(
+    50:$background-black,
+    100:$background-black,
+    200:$background-black,
+    300:$background-black,
+    400:$background-black,
+    500:$background-black,
+    600:$background-black,
+    700:$background-black,
+    800:$background-grey-4,
+    900:$background-grey-4,
+    A100:$background-grey-4,
+    A200:$background-grey-4,
+  )
+);
+
+$kz-palette-green:(
+  50:#1C4B00,
+  100:#1C4B00,
+  200:#1C4B00,
+  300:#358A00,
+  400:#358A00,
+  500:#358A00,
+  600:#4AC500,
+  700:#4AC500,
+  800:#4FD200,
+  900:#4FD200,
+  A100:#59EC00,
+  A200:#59EC00,
+  contrast:(
+    50:$background-black,
+    100:$background-black,
+    200:$background-black,
+    300:$background-black,
+    400:$background-black,
+    500:$background-black,
+    600:$background-black,
+    700:$background-black,
+    800:$background-grey-4,
+    900:$background-grey-4,
+    A100:$background-grey-4,
+    A200:$background-grey-4,
+  )
+);
+
+
+
+
+
+
+//Gradientes
+$mv-gradient:linear-gradient(108deg,rgba(12,92,76,1) 27%,rgba(41,40,129,1) 100%);
+$mv-grey-gradient:linear-gradient(180deg, #D9D9D9 0%, rgba(217, 217, 217, 0.89) 16.67%, rgba(217, 217, 217, 0.00) 100%);
+$mv-grey-gradient-dark:linear-gradient(180deg, #2f2e2e 0%, rgba(55, 55, 55, 0.89) 16.67%, #d0d0d000 100%);
+

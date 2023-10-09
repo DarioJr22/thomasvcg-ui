@@ -1,0 +1,13 @@
+@import '../../../assets/style/core/core_token';
+
+button.apresentacaoButton{
+  color: $background-white;
+  background-color: $accent-colors;
+  border: none;
+  border-radius:15px ;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 1rem;
+  width: 25.2rem;
+  height: 3.43rem;
+}

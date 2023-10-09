@@ -1,0 +1,68 @@
+<div class="mainWrapper">
+  <tc-navbar></tc-navbar>
+  <!-- TODO
+REFINAR ESTILIZAÇÃO DA PÁGINA
+- [ ] Estrutura
+- [ ] Animações
+- [ ] Gedgets
+  -->
+
+<section class="apresentacao1">
+  <img class="container" src="../../../assets/imgs/visualComponents/retanguloFadeVerde.png" width="100%" height="37rem" alt="apresentacao">
+  <div class="descricaoWrapper">
+    <div class="descricao">
+      <h1 class="titulo">Apresentação</h1>
+      <article>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam asperiores dolorum expedita iusto cumque mo
+      </article>
+      <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
+        Contate-nos Agora
+      </tc-button>
+    </div>
+    <span class="imgThomas1">
+      <img src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
+    </span>
+
+  </div>
+</section>
+
+
+<!-- <section class="apresentacao2">
+  <img class="container" src="../../../assets/imgs/visualComponents/Rectangle 27.png" width="100%" height="37rem" alt="apresentacao">
+  <div class="descricaoWrapper">
+    <div class="descricao">
+      <h1 class="titulo">Apresentação</h1>
+      <article>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam asperiores dolorum expedita iusto cumque mo
+      </article>
+      <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
+        Contate-nos Agora
+      </tc-button>
+    </div>
+    <span class="imgThomas1">
+      <img src="../../../assets/imgs/visualComponents/ftSemBg2.png" alt="imgThomas1">
+    </span>
+
+  </div>
+</section> -->
+
+
+<!-- TODO FAZER A PLOTAGEM DO ELEMENTOS DE SLIDE -->
+
+<section class="areasDeAtuacaoHome">
+  <header class="tituloAreaAtuacao">
+    <h2>Areas de atuação</h2>
+  </header>
+</section>
+
+<tc-multi-cards
+[dados]="dadosAreaAtuacao">
+</tc-multi-cards>
+
+
+
+<tc-multi-cards
+[dados]="dadosDepoimento">
+</tc-multi-cards>
+
+</div>
