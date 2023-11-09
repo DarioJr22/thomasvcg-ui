@@ -1,22 +1,36 @@
-<div  *ngIf="dados.type == 'ATUACAO' " class="widthDelimiter">
-  <div class="slideWrapper">
-    <div class="keen-slider" #sliderRef>
-      <section [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'" *ngFor="let i of dados.content; index as y" class="keen-slider__slide cardAreaAtuacao">
+<div class="slideTextComponentWrapper" *ngIf="dados.type == 'ATUACAO' " >
+
+  <div class="fraseDestaqueAreaAtuacao">
+    <h1 >
+      {{frasesAtuacao}}
+    </h1>
+
+
+  </div>
+
+  <div class="slideWrapperAtuacao">
+
+
+    <div class="keen-slider" #slideRefAreas>
+      <section
+      [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'"
+      *ngFor="let i of dados.content; index as y" class="keen-slider__slide cardAreaAtuacao">
        <header>
         <img [src]="i.header" alt="icon">
        </header>
        <article class="titulo">
         {{i.main}}
        </article>
-       <article class="descricao">
+        <article class="descricao">
         {{i.footer}}
-       </article>
+       </article> <!---->
        <button class="button_multicards">
         Contate um advogado
        </button>
       </section>
     </div>
   </div>
+
 </div>
 
 <div  *ngIf="dados.type == 'DEPOIMENTO' " class="widthDelimiter">

@@ -1,3 +1,6 @@
+@import '../../../assets/style/layout/_keyframes.scss';
+
+
 /* Aqui se controla o tamanho dos Cards */
 [class^="number-slide"],
 [class*=" number-slide"] {
@@ -18,8 +21,10 @@
 
 .slideWrapper{
   width: auto;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
+
+
 
 .widthDelimiter{
   width: 100%;
@@ -38,18 +43,47 @@ cursor: pointer;
 
 
 }
+.cardsAreaWrapper{
+display: flex;
+width: 100vw;
+justify-content: space-around;
+
+}
 
 .cardAreaAtuacao {
   border-radius: 7px;
-  min-height: 10rem;
-  width: 15rem;
+  min-height: 27rem !important;
+  width: 20rem;
+  padding: 2rem;
   display: flex;
   flex-flow: column wrap;
   row-gap: 1rem;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   color: #fff;
+
+  article.titulo,header{
+    transform: translateY(5rem);
+    transition:  .1s ease-out;
+  }
+
+
+  article.descricao, button{
+    opacity: 0;
+    transition:  .3s ease-out;
+  }
+
+  &:hover{
+    article.descricao,button{
+      opacity: 1;
+      transition:  .3s ease-out;
+    }
+
+    article.titulo,header{
+      transform: translateY(0rem);
+      transition:  .1s ease-out;
+    }
+  }
 }
 
 .cardDepoimentoHome {
@@ -63,5 +97,26 @@ cursor: pointer;
   justify-content: flex-endw;
   padding: 1rem;
   color: #fff;
+}
+
+
+.slideTextComponentWrapper{
+  display: flex;
+  width: 100%;
+}
+
+
+.fraseDestaqueAreaAtuacao{
+  width:40%;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  animation: fade-in-top ease-in-out 0.5s forwards
+
+}
+
+.slideWrapperAtuacao{
+  width: 60%;
+  overflow-x: hidden;
 }
 

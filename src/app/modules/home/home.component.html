@@ -1,23 +1,61 @@
-<div class="mainWrapper">
+<div class="mainWrapperHome">
   <tc-navbar></tc-navbar>
   <!-- TODO
 REFINAR ESTILIZAÇÃO DA PÁGINA
-- [ ] Estrutura
-- [ ] Animações
+
+- [ ] Apresentação
+    - [ ] Mudança dinâmica de frases na Home
+    - [ ] Link pra contato
+- [ ] Areas de atuação
+    - [X] Resolver bug de plotagem do slide
+    - [ ] Slide + Frase de definição
+      - [ ] Animações das letras
+      - [ ] Formatação das letras
+      - [ ] Escolher ícones e imagens que ficarão em cada card
+        - [ ] Baixar
+        - [ ] Implementar
+      - [ ] Botões e controle
+        - Docs - https://keen-slider.io/docs#event-hooks
+        - Exemplo - https://codesandbox.io/s/github/rcbyr/keen-slider-sandboxes/tree/v6/navigation-controls/arrows-and-dots/angular?file=/src/app/app.component.ts
+- [ ] Depoimentos
+    - [ ] Recolher depoimentos com thomas
+- [ ] Chamada para a ação
+    - [ ] pesquisar
+    - [ ] Definir
+    - [ ] Validar
+    - [ ] Construir
 - [ ] Gedgets
-  -->
+    - [ ] Inferior direito da tela
+      - [ ] Zap
+      - [ ] Telegram
+      - [ ] voltar ao topo
+-
+-->
 
 <section class="apresentacao1">
   <img class="container" src="../../../assets/imgs/visualComponents/retanguloFadeVerde.png" width="100%" height="37rem" alt="apresentacao">
   <div class="descricaoWrapper">
     <div class="descricao">
-      <h1 class="titulo">Apresentação</h1>
-      <article>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam asperiores dolorum expedita iusto cumque mo
-      </article>
-      <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
-        Contate-nos Agora
-      </tc-button>
+      <h1 class="titulo">Resolva sua
+        <span  class="destaque">
+        pendência jurídica
+      </span> de forma ágil !</h1>
+        <article>
+          É um prazer ter você conosco.
+          Aqui você encontra
+          <span class="destaque">
+            profissionais especializados nos mais diversos ramos do direito.
+          </span>
+            Nossa ideologia de trabalho é sempre te colocar nas mãos de quem sabe exatamente como resolver sua dor de cabeça.
+          <span class="destaque">
+            Trabalhamos com especialistas
+          </span>
+
+          porque  “quem sabe tudo”, não sabe nada.
+        </article>
+        <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
+          Contate-nos Agora
+        </tc-button>
     </div>
     <span class="imgThomas1">
       <img src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
@@ -50,19 +88,29 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 <!-- TODO FAZER A PLOTAGEM DO ELEMENTOS DE SLIDE -->
 
 <section class="areasDeAtuacaoHome">
-  <header class="tituloAreaAtuacao">
-    <h2>Areas de atuação</h2>
-  </header>
+  <span class="tituloAreaAtuacao">
+    <h2>
+      Areas de atuação
+    </h2>
+  </span>
 </section>
 
 <tc-multi-cards
+
 [dados]="dadosAreaAtuacao">
 </tc-multi-cards>
 
 
+<section class="depoimentosHome">
+    <span>
+        <h2>
+          Depoimentos
+        </h2>
+    </span>
+</section>
 
 <tc-multi-cards
-[dados]="dadosDepoimento">
+  [dados]="dadosDepoimento">
 </tc-multi-cards>
 
 </div>

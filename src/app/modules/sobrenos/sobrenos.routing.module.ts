@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './modules/home/home.component';
+import { SobrenosComponent } from './sobrenos.component';
 
 const routes: Routes = [
 {
   path:'',
-  component:HomeComponent
-},
-{
-  path:'sobrenos',
-  loadChildren:()=> import('./modules/sobrenos/sobrenos.module').then(x => x.SobrenosModule)
+  component:SobrenosComponent
 }
 
 ];

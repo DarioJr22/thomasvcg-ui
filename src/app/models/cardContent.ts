@@ -1,5 +1,5 @@
 export interface MultCards{
-  type:string
+  type:'ATUACAO' | 'DEPOIMENTO'
   content:CardContent[]
   mode:string | "free" | "snap" | "free-snap" | "free" | "snap" | "free-snap" | undefined
   loop:boolean
@@ -14,4 +14,10 @@ export class CardContent{
   footer!:any
   type!:any
   bg!:string
+}
+
+export class CardContentElenco{
+  img!:string
+  titulo!:string
+  subtitulo!:string
 }

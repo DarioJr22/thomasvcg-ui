@@ -10,4 +10,12 @@ button.apresentacaoButton{
   padding: 1rem;
   width: 25.2rem;
   height: 3.43rem;
+  transform: scale(1.0);
+  transition: transform .3s ease;
+  &:hover{
+    background:linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+    transition: .3s ease;
+    transform: scale(1.1);
+    box-shadow: $shadow1;
+  }
 }
