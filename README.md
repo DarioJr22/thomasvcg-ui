@@ -50,9 +50,5 @@ Instruções sobre como instalar e executar o projeto localmente, incluindo coma
 ## Colaboração
 Detalhes sobre como contribuir para o projeto, incluindo padrões de codificação, processos de pull request e outras diretrizes.
 
-## Licença
-Informações sobre a licença do projeto.
 
 ---
-
-**Nota:** Este Readme é um modelo inicial e pode ser adaptado conforme o desenvolvimento do projeto e a inclusão de novas funcionalidades ou alterações.
