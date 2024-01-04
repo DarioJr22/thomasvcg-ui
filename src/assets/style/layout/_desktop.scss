@@ -5,6 +5,9 @@
   //Páginas de Login e cadastro
   //Home
   //NavBar
+
+
+
   nav{
     div.faixaSuperior{
       display:flex;
@@ -23,6 +26,7 @@
           display: flex;
           align-items: center !important;
           column-gap: 1rem;
+
         }
       }
 
@@ -73,7 +77,14 @@
 
   div.mainWrapperHome{
     width: 100vw;
-    height: 350vh;
+    height: 500vh;
+    background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
+    background-size: cover;
+  }
+
+  div.mainWrapperSobreNos{
+    width: 100vw;
+    height: 100vh;
     background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
     background-size: cover;
   }
@@ -84,17 +95,17 @@
     margin-top: 1.5rem;
     align-items: center;
     margin-bottom: 5rem;
+    background: linear-gradient(91deg, #0D292A 65.53%, rgba(13, 41, 42, 0.00) 85.8%);
     img.container{
       margin-left: 0px;
       padding-left: 0px;
-      height: 37rem;
+
     }
     div.descricaoWrapper{
       display: flex;
-      position: absolute;
       align-items: center;
       width: 100vw !important;
-      justify-content: space-between;
+      justify-content: space-around;
       padding: 0rem 5rem;
 
       div.descricao{
@@ -103,11 +114,16 @@
         color: white;
         row-gap: 2rem;
         width: 40rem;
-
+        align-items: center;
         h1.titulo{
           font-size: 3em;
           font-weight: 500;
           color: $background-white;
+          white-space: wrap;
+        }
+
+        article{
+          font-size: 24px;
         }
 
         span.destaque{
@@ -165,6 +181,14 @@
       }
     }
   } */
+
+.areasDeAtuacaoHomeWrapper{
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  background: linear-gradient(270deg, #0D292A 37.12%, rgba(13, 41, 42, 0.00) 92.96%);
+  padding-top:1rem ;
+  padding-bottom: 1rem;
   .areasDeAtuacaoHome{
     width: 100%;
     display: flex;
@@ -191,29 +215,216 @@
       }
     }
   }
+}
 
   .depoimentosHome{
+    *{
+      color: #fff;
+    }
     width: 100%;
     display: flex;
     flex-flow:column nowrap;
     align-items: start;
-    span{
+    padding: 2rem;
+    span.depoimentoTitle{
       margin: 1rem;
-      border-bottom: 2px #fff solid;
       cursor:pointer;
-      h2{
-        font-size: 32px;
-        font-weight: 500;
-        color: white;
-        transition: 0.3s ease-in-out;
-        &:hover{
-          color: grey;
-          transition: 0.3s ease-in-out;
-        }
-      }
+      h2.destaque{
+        font-size: 48px;
+        font-weight: 600;
+        background-image: linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+       }
     }
 
+    .depoimentoPosition{
+      width: 100%;
+      display: flex;
+      column-gap: 4.62rem;
+      .profileWrapper{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 32.375rem;
+        height: 45.5625rem;
+        border-radius: 1.25rem;
+        background: linear-gradient(83deg, #0D292A 27.34%, #0D292A 84.43%);
+        padding: 1.5rem;
+        .profile{
+          display: flex;
+          flex-direction: column;
+          width: 26.9895rem;
+          height: 39.625rem;
+          border-radius: 1.25rem;
+          background: rgba(0, 0, 0, 0.80);
+          padding: 1.5rem;
+          row-gap: 1.5rem;
+          .profileImgWrapper{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            row-gap: 1.5rem;
+            .profileImg{
+              border-radius: 50%;
+              width: 5.5rem;
+              height: 5.5rem;
+            }
+          }
+          .profileText{
+            width: 100%;
+            display: flex;
+            align-items: start;
+            flex-flow: column wrap;
+            row-gap: 1.5rem;
+          }
+        }
+      }
+
+      .depoimentosWrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 1.5rem;
+
+        .depoimentosWrap{
+          background: linear-gradient(83deg, #0D292A 27.34%, #0D292A 84.43%);
+          width: 100%;
+          height: 18.4375rem;
+          padding: 1.5rem;
+          border-radius: 1.25rem;
+          display: flex;
+          justify-content: flex-end;
+
+
+          .quoteWrapper{
+            background: #000;
+            color: #fff;
+            width: 100%;
+            opacity: 0.5;
+            height: 15.375rem;
+            display: flex;
+            justify-self: center;
+            padding: 1rem;
+            border-radius: 1.25rem;
+            p{
+              font-style: italic;
+            }
+
+          }
+
+          .quoteAutor{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+          }
+
+
+        }
+    }
+
+
+
+  }}
+
+  .calltoAction{
+    margin: 8rem 0rem;
+    width: 100%;
+    background: #0D292A;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.5rem;
+    padding: 2rem;
+
+    .calltoActionTitle{
+      display: flex;
+      justify-content: center;
+      text-transform: capitalize;
+      letter-spacing: 1.5px;
+      font-size: 36px;
+      font-weight: 600;
+      background-image: linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+.callToActionButtons{
+    display: flex;
+    column-gap: 1.5rem;
+    .talkWithUs{
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: #fff;
+      background:linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+      border: none;
+      border-radius:15px ;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 1rem;
+      width: 14rem;
+      height: 3.43rem;
+      transition:  .3s ease;
+      appearance: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 1rem;
+
+      span>img{
+        width: 35px;
+        height: 35px;
+        color: white;
+      }
+
+      &:hover{
+        transform: scale(1.1);
+        transition: .3s ease;
+        box-shadow:  #0d90c2 0px 0px 36px 0px;
+      }
+    }
+    .whatsapp{
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: #fff;
+      background:linear-gradient(180deg, #2fd14d 20%, #005e61) ;
+      border: none;
+      border-radius:15px ;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 1rem;
+      width: 14rem;
+      height: 3.43rem;
+      transition:  .3s ease;
+      appearance: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .3s ease;
+      column-gap: 1rem;
+
+      span>img{
+        width: 35px;
+        height: 35px;
+        color: white;
+      }
+
+
+      &:hover{
+        transform: scale(1.1);
+        transition: .3s ease;
+        box-shadow:  #00ff2f 0px 0px 36px 0px;
+      }
+    }
   }
+  }
+
+
 
   .button_multicards{
       background: $accent-colors;

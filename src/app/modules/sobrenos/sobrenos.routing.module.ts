@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SobrenosComponent } from './sobrenos.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { SobrenosComponent } from "./sobrenos.component";
 
-const routes: Routes = [
-{
-  path:'',
-  component:SobrenosComponent
-}
 
-];
+const routes:Routes =[
+  {
+    path:'',
+    component:SobrenosComponent
+  }
+]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports:[RouterModule.forChild(routes)]
 })
-export class AppRoutingModule { }
+
+export class SobreNosRoutingModule{}

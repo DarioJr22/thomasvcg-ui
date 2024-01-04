@@ -5,6 +5,8 @@ import { MultiCardsComponent } from './multi-cards/multi-cards.component';
 import { ButtonComponent } from './button/button.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -12,17 +14,20 @@ import { NavbarComponent } from './navbar/navbar.component';
     SingleCardComponent,
     MultiCardsComponent,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports:[
 
     SingleCardComponent,
     MultiCardsComponent,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    MatIconModule,
+    FooterComponent
 
   ]
 })

@@ -50,9 +50,10 @@ justify-content: space-around;
 
 }
 
+
 .cardAreaAtuacao {
   border-radius: 7px;
-  min-height: 27rem !important;
+ height: 23rem !important;
   width: 20rem;
   padding: 2rem;
   display: flex;
@@ -72,7 +73,7 @@ justify-content: space-around;
     opacity: 0;
     transition:  .3s ease-out;
   }
-
+/*
   &:hover{
     article.descricao,button{
       opacity: 1;
@@ -83,7 +84,7 @@ justify-content: space-around;
       transform: translateY(0rem);
       transition:  .1s ease-out;
     }
-  }
+  } */
 }
 
 .cardDepoimentoHome {
@@ -106,17 +107,56 @@ justify-content: space-around;
 }
 
 
+img.fa-icon{
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  transition: .1s ease-out;
+  &:hover{
+    opacity: 0.6;
+    transition: .1s ease-out;
+    transform: scale(1.1);
+  }
+}
+
+svg{
+  color: red;
+}
 .fraseDestaqueAreaAtuacao{
   width:40%;
   display: flex;
   align-items: center;
   padding: 3rem;
-  animation: fade-in-top ease-in-out 0.5s forwards
 
+  h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+   }
+
+}
+
+
+.destaque{
+  font-weight: 600;
+  background-image: linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+article.destaque{
+  font-size: 27px;
+  transition: .1s ease;
+
+  &:hover{
+    transform: scale(1.1);
+    transition: .1s ease;
+  }
 }
 
 .slideWrapperAtuacao{
   width: 60%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 

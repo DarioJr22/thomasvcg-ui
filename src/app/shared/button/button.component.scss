@@ -2,7 +2,7 @@
 
 button.apresentacaoButton{
   color: $background-white;
-  background-color: $accent-colors;
+  background:linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
   border: none;
   border-radius:15px ;
   font-size: 16px;
@@ -10,12 +10,46 @@ button.apresentacaoButton{
   padding: 1rem;
   width: 25.2rem;
   height: 3.43rem;
-  transform: scale(1.0);
-  transition: transform .3s ease;
+  transition:  .3s ease;
+
+
+
   &:hover{
-    background:linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+    animation: vibrate 1s linear 0s infinite normal none;
     transition: .3s ease;
-    transform: scale(1.1);
-    box-shadow: $shadow1;
+  }
+}
+
+@keyframes vibrate{
+
+  0% {
+    transform:translateY(0);
+  }
+  25% {
+    transform:translateY(0);
+  }
+  40% {
+    transform:translateY(-14px);
+  }
+  55% {
+    transform:translateY(0);
+  }
+  65% {
+    transform:translateY(-6px);
+  }
+  75% {
+    transform:translateY(0);
+  }
+  82% {
+    transform:translateY(-3px);
+  }
+  87% {
+    transform:translateY(0);
+  }
+  93% {
+    transform:translateY(-2px);
+  }
+  100% {
+    transform:translateY(0);
   }
 }

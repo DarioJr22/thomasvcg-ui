@@ -3,26 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './modules/home/home.component';
-import { DepoimentosComponent } from './modules/depoimentos/depoimentos.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { MultiCardsComponent } from './shared/multi-cards/multi-cards.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './shared/footer/footer.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DepoimentosComponent,
-
-
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

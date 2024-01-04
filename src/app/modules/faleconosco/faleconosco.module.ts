@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FaleconoscoComponent } from './faleconosco.component';
+import { FaleConoscoComponent } from './faleconosco.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FaleConoscoRoutingModule } from './faleconosco-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    FaleconoscoComponent
+    FaleConoscoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    FaleConoscoRoutingModule
   ]
 })
 export class FaleconoscoModule { }

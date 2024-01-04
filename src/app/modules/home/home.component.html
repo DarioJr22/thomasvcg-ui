@@ -3,43 +3,68 @@
   <!-- TODO
 REFINAR ESTILIZAÇÃO DA PÁGINA
 
-- [ ] Apresentação
-    - [ ] Mudança dinâmica de frases na Home
-    - [ ] Link pra contato
-- [ ] Areas de atuação
+- [x] Apresentação
+    - [X] Mudança dinâmica de frases na Home
+    - [x] Link pra contato
+    - [X] Correção de background
+- [x] Areas de atuação
     - [X] Resolver bug de plotagem do slide
     - [ ] Slide + Frase de definição
-      - [ ] Animações das letras
-      - [ ] Formatação das letras
-      - [ ] Escolher ícones e imagens que ficarão em cada card
-        - [ ] Baixar
-        - [ ] Implementar
-      - [ ] Botões e controle
+      - [x] Mudança dinâmica de frases
+      - [x] BackGrounds
+      - [x] Correção de background
+        - [x] Trabalhista
+        - [x] cIVIL
+      - [x] Estilização
+      - [x] Comportamento
+      - [x] Escolher ícones e imagens que ficarão em cada card
+        - [x] Baixar
+- [ ] Implementar
+      - [X] Botões e controle
         - Docs - https://keen-slider.io/docs#event-hooks
         - Exemplo - https://codesandbox.io/s/github/rcbyr/keen-slider-sandboxes/tree/v6/navigation-controls/arrows-and-dots/angular?file=/src/app/app.component.ts
-- [ ] Depoimentos
-    - [ ] Recolher depoimentos com thomas
+
+
+ - [x] Depoimentos
+    - [ ] Funcionalidades OnSroll
+    - [ ] Integração com o backend
+    - [ ] Mock de depoimentos
+    - [x] Recolher depoimentos com thoma
 - [ ] Chamada para a ação
-    - [ ] pesquisar
-    - [ ] Definir
-    - [ ] Validar
+    - [x] pesquisar
+    - [x] Definir
+    - [x] Validar
     - [ ] Construir
+    - [ ] Botão de contato do fale conosco
+      - [ ] Fale conosco
+      - [ ] Whatsapp
 - [ ] Gedgets
     - [ ] Inferior direito da tela
       - [ ] Zap
       - [ ] Telegram
       - [ ] voltar ao topo
+- [ ] Footer
+- [ ] Loading
+
 -
 -->
 
 <section class="apresentacao1">
-  <img class="container" src="../../../assets/imgs/visualComponents/retanguloFadeVerde.png" width="100%" height="37rem" alt="apresentacao">
   <div class="descricaoWrapper">
     <div class="descricao">
       <h1 class="titulo">Resolva sua
-        <span  class="destaque">
-        pendência jurídica
-      </span> de forma ágil !</h1>
+
+        <span class="wrapper">
+
+          <ul class="dynamic-txts">
+            <li><span class="destaque">Pendência jurídica </span></li>
+            <li><span class="destaque">Pendência previdenciária</span></li>
+            <li><span class="destaque">Reconciliação familiar</span></li>
+            <li><span class="destaque">Alguma coisa juridica</span></li>
+          </ul>
+        </span>
+      de forma ágil !</h1>
+
         <article>
           É um prazer ter você conosco.
           Aqui você encontra
@@ -53,9 +78,13 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
           porque  “quem sabe tudo”, não sabe nada.
         </article>
-        <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
+        <a
+        target="_blank"
+        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msgZap"
+        class="apresentacaoButton1"
+        [type]="'APRESENTACAO'">
           Contate-nos Agora
-        </tc-button>
+        </a>
     </div>
     <span class="imgThomas1">
       <img src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
@@ -86,31 +115,73 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
 
 <!-- TODO FAZER A PLOTAGEM DO ELEMENTOS DE SLIDE -->
+<section class="areasDeAtuacaoHomeWrapper">
+  <div class="areasDeAtuacaoHome">
+    <span class="tituloAreaAtuacao">
+      <h2 class="destaque">
+        Areas de atuação
+      </h2>
+    </span>
+  </div>
 
-<section class="areasDeAtuacaoHome">
-  <span class="tituloAreaAtuacao">
-    <h2>
-      Areas de atuação
-    </h2>
-  </span>
+  <tc-multi-cards
+  class="multiCardsAreaAtuacao"
+  [dados]="dadosAreaAtuacao">
+  </tc-multi-cards>
 </section>
 
-<tc-multi-cards
-
-[dados]="dadosAreaAtuacao">
-</tc-multi-cards>
 
 
 <section class="depoimentosHome">
-    <span>
-        <h2>
+    <span class="depoimentoTitle">
+        <h2 class="destaque">
           Depoimentos
         </h2>
     </span>
+    <div class="depoimentoPosition">
+      <section class="profileWrapper">
+        <section class="profile">
+          <span class="profileImgWrapper">
+            <img class="profileImg" src="../../../assets/imgs/ThomasVcg_profile.png" alt="profile">
+          </span>
+          <article class="profileText">
+            <h3>Thomas Sei oque lalalal</h3>
+            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit."</p>
+          </article>
+        </section>
+      </section>
+      <section class="depoimentosWrapper">
+        <!-- Iterator de depoimentos -->
+        <section class="depoimentosWrap">
+          <span class="quoteWrapper">
+            <p>lorem loremloremloremloremloremlorem</p>
+            <span class="quoteAutor">
+              <p> Fulano teves</p>
+            </span>
+          </span>
+        </section>
+      </section>
+    </div>
+
 </section>
 
-<tc-multi-cards
-  [dados]="dadosDepoimento">
-</tc-multi-cards>
 
+<section class="calltoAction">
+  <span class="calltoActionTitle">
+    <h5 class="destaque">
+      Tem alguma duvida ?
+    </h5>
+  </span>
+  <span class="callToActionButtons">
+    <button class="talkWithUs">
+      <span><img src="../../../assets/imgs/icons/ChatIcon.svg" alt="Chat"></span>
+      <p>Contate-nos</p>
+    </button>
+    <button class="whatsapp">
+      <span><img src="../../../assets/imgs/icons/whatsapp-svgrepo-com.svg" alt="Whatsapp"></span>
+      <p>Whatsapp</p>
+    </button>
+  </span>
+</section>
+<tcv-footer></tcv-footer>
 </div>
