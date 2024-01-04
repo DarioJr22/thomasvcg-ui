@@ -1,0 +1,104 @@
+@import "./../core/_core_token.scss";
+
+@media screen and (max-width:768px) {
+  //Páginas de Login e cadastro
+div.loginCadastroWrapper{
+  display: flex;
+
+  div.loginWrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    .form-login{
+      margin: 2rem 0rem 0rem 0rem ;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      row-gap: 1rem;
+      button[mat-raised-button]{
+       padding:  0.5625rem 2.9375rem;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 400;
+      }
+      .opcoesEntrar{
+        display: flex;
+        box-sizing: border-box;
+        flex-flow: row nowrap;
+        justify-content: center;
+        column-gap:0.5rem;
+        padding: 2rem;
+        }
+      }
+    }
+  }
+
+  //Home
+  .homeWrapper{
+    width: 100%;
+    box-sizing: border-box;
+    padding: $padding-page-mobile;
+    .cardMes{
+      width: 100%;
+    }
+
+    .dashboardCards{
+
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      width: 100% ;
+      row-gap: 0.5rem;
+      *{
+        display: flex;
+        width: 100%;
+      }
+      .despRec{
+        width: 100%;
+        column-gap: 0.5rem;
+      }
+      .saldo{
+        width: 100%;
+      }
+    }
+  }
+
+  //Despesas
+  div.despesasWrapper#desp{
+    width: 100%;
+    box-sizing: border-box;
+    padding: $padding-page-mobile;
+
+    .cardMes{
+      width: 100%;
+    }
+    .cardDespesaTotal{
+      width: 100%;
+
+    }
+
+    div#cardGrafico.cardGrafico{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 3rem 0rem;
+      .buttonDashBoard{
+        background: #d8d8d8;
+        position: absolute;
+        top: 12rem;
+        right: 20px;
+        width: 4rem;
+        height: 1.5rem;
+        border-radius: 7px;
+        display: flex;
+        align-items: center !important;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: none;
+      }
+    }
+
+  }
+}

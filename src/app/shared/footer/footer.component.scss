@@ -1,0 +1,94 @@
+.footer {
+    width: 100vw;
+    padding: 1.5rem;
+    background: #272727;
+    height: -webkit-fill-available;
+    border-top: 3px white solid;
+
+    .form-control{
+
+    }
+
+  .footerWrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    div::after{
+        content: '';
+        border-right: 1px solid #ffffff62;
+      }
+
+
+    .email-section {
+      display: flex;
+       flex-direction: column;
+       row-gap: 1rem;
+     }
+
+     .contact-info
+     {
+      font-weight: 500;
+      color: white;
+      row-gap: 1rem;
+      display: flex;
+      flex-direction: column;
+
+     }
+
+     .footer-menu {
+       display: flex;
+       flex-direction: column;
+       row-gap: 1rem;
+       margin-bottom: 20px;
+       a {
+        padding: 1rem;
+         border-radius: 15px;
+         margin-right: 15px;
+         text-decoration: none;
+         color: white;
+         font-weight:500;
+         transition: all 0.2s ease;
+         &:hover {
+          background-color: #005e61;
+           transition: all 0.2s ease;
+         }
+       }
+     }
+
+  }
+
+  .additional-info {
+    width: 100%;
+    font-weight: 500;
+      color: white;
+  }
+
+  button{
+    text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: #fff;
+      background:linear-gradient(180deg, #2fd14d 20%, #005e61) ;
+      border: none;
+      border-radius:15px ;
+
+      font-weight: 500;
+      padding: 1rem;
+      width: 10rem;
+      height: 3.43rem;
+      transition:  .3s ease;
+      appearance: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .3s ease;
+
+
+      &:hover{
+        transform: scale(1.1);
+        transition: .3s ease;
+        box-shadow:  #00ff2f 0px 0px 36px 0px;
+      }
+  }
+}
