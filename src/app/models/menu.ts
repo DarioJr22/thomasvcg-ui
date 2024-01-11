@@ -1,17 +1,22 @@
 export const MENU = [
   {
-    nome:'Home'
+    nome:'Home',
+    link:'/'
   },
   {
-    nome:'Sobre nós'
+    nome:'Sobre nós',
+    link:'/sobrenos'
   },
   {
-    nome:'Depoimentos'
+    nome:'Em Honra',
+    link:'/emhonra'
   },
   {
-    nome:'Artigos'
+    nome:'Artigos',
+    link:'/postagen'
   },
   {
-    nome:'Fale Conosco'
+    nome:'Fale Conosco',
+    link:'/faleconosco'
   }
 ]

@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
+    RouterModule
   ],
   exports:[
 
@@ -27,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     ButtonComponent,
     NavbarComponent,
     MatIconModule,
-    FooterComponent
+    FooterComponent,
+
 
   ]
 })

@@ -26,7 +26,6 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
 
  - [x] Depoimentos
-    - [ ] Funcionalidades OnSroll
     - [ ] Integração com o backend
     - [ ] Mock de depoimentos
     - [x] Recolher depoimentos com thoma
@@ -34,17 +33,13 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
     - [x] pesquisar
     - [x] Definir
     - [x] Validar
-    - [ ] Construir
-    - [ ] Botão de contato do fale conosco
-      - [ ] Fale conosco
-      - [ ] Whatsapp
-- [ ] Gedgets
-    - [ ] Inferior direito da tela
-      - [ ] Zap
-      - [ ] Telegram
-      - [ ] voltar ao topo
+    - [x] Construir
+    - [x] Botão de contato do fale conosco
+      - [x] Fale conosco
+      - [x] Whatsapp
 - [ ] Footer
 - [ ] Loading
+
 
 -
 -->
@@ -94,25 +89,6 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 </section>
 
 
-<!-- <section class="apresentacao2">
-  <img class="container" src="../../../assets/imgs/visualComponents/Rectangle 27.png" width="100%" height="37rem" alt="apresentacao">
-  <div class="descricaoWrapper">
-    <div class="descricao">
-      <h1 class="titulo">Apresentação</h1>
-      <article>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam asperiores dolorum expedita iusto cumque mo
-      </article>
-      <tc-button class="apresentacaoButton1" [type]="'APRESENTACAO'">
-        Contate-nos Agora
-      </tc-button>
-    </div>
-    <span class="imgThomas1">
-      <img src="../../../assets/imgs/visualComponents/ftSemBg2.png" alt="imgThomas1">
-    </span>
-
-  </div>
-</section> -->
-
 
 <!-- TODO FAZER A PLOTAGEM DO ELEMENTOS DE SLIDE -->
 <section class="areasDeAtuacaoHomeWrapper">
@@ -138,20 +114,53 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
           Depoimentos
         </h2>
     </span>
-    <div class="depoimentoPosition">
-      <section class="profileWrapper">
+    <div #statementPosition class="depoimentoPosition">
+      <section #profile class="profileWrapper">
         <section class="profile">
           <span class="profileImgWrapper">
             <img class="profileImg" src="../../../assets/imgs/ThomasVcg_profile.png" alt="profile">
           </span>
           <article class="profileText">
-            <h3>Thomas Sei oque lalalal</h3>
-            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit."</p>
+            <h3>Thomas Crisóstomo</h3>
+            <h5>Advogado</h5>
+            <p>Um dos membros do time.</p>
           </article>
         </section>
       </section>
-      <section class="depoimentosWrapper">
+      <section #statement class="depoimentosWrapper">
         <!-- Iterator de depoimentos -->
+        <section class="depoimentosWrap">
+          <span class="quoteWrapper">
+            <p>lorem loremloremloremloremloremlorem</p>
+            <span class="quoteAutor">
+              <p> Fulano teves</p>
+            </span>
+          </span>
+        </section>
+        <section class="depoimentosWrap">
+          <span class="quoteWrapper">
+            <p>lorem loremloremloremloremloremlorem</p>
+            <span class="quoteAutor">
+              <p> Fulano teves</p>
+            </span>
+          </span>
+        </section>
+        <section class="depoimentosWrap">
+          <span class="quoteWrapper">
+            <p>lorem loremloremloremloremloremlorem</p>
+            <span class="quoteAutor">
+              <p> Fulano teves</p>
+            </span>
+          </span>
+        </section>
+        <section class="depoimentosWrap">
+          <span class="quoteWrapper">
+            <p>lorem loremloremloremloremloremlorem</p>
+            <span class="quoteAutor">
+              <p> Fulano teves</p>
+            </span>
+          </span>
+        </section>
         <section class="depoimentosWrap">
           <span class="quoteWrapper">
             <p>lorem loremloremloremloremloremlorem</p>

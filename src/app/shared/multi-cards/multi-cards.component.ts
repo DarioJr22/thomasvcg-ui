@@ -56,9 +56,8 @@ export class MultiCardsComponent implements AfterViewInit, OnDestroy{
 
   ngAfterViewInit(): void {
 
-    if(this.dados.type == 'DEPOIMENTO'){
-        this.slider = new KeenSlider(this.sliderRef.nativeElement,
-          {
+    if(this.dados.type == 'ELENCO'){
+        this.slider = new KeenSlider(this.sliderRef.nativeElement,{
           loop:this.dados.loop,
           mode:'free',
           slides:{

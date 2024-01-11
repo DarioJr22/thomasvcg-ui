@@ -47,7 +47,7 @@
 
 
       <ul class="menuOpt">
-        <li *ngFor="let i of menu">
+        <li [routerLink]="[i.link]" *ngFor="let i of menu">
           {{i.nome}}
         </li>
       </ul>

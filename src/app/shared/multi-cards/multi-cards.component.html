@@ -1,4 +1,6 @@
-<div class="slideTextComponentWrapper" *ngIf="dados.type == 'ATUACAO' " >
+<div
+class="slideTextComponentWrapper"
+*ngIf="dados.type == 'ATUACAO' " >
 
   <div class="fraseDestaqueAreaAtuacao">
 
@@ -10,16 +12,17 @@
   </div>
 
   <div class="slideWrapperAtuacao">
-
-
-
     <div class="keen-slider" #slideRefAreas>
       <section
-
       [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'"
-      *ngFor="let i of dados.content; index as y" class="keen-slider__slide cardAreaAtuacao">
+      *ngFor="let i of dados.content; index as y"
+      class="keen-slider__slide cardAreaAtuacao">
        <span class="iconAreaAtuacaoWrapper">
-           <img class="iconAreaAtuacao" height="100" width="100" [src]="i.header" alt="icon">
+           <img
+           class="iconAreaAtuacao"
+           height="100"
+           width="100"
+           [src]="i.header" alt="icon">
        </span>
 
        <article class="destaque">
@@ -41,23 +44,56 @@
       src="../../../assets/imgs/icons/right.svg"
       class="fa-icon">
     </span>
-
-
-  </div>
-
-</div>
-
-<div  *ngIf="dados.type == 'DEPOIMENTO' " class="widthDelimiter">
-  <div class="slideWrapper">
-    <div class="keen-slider" #sliderRef>
-      <section
-      [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'"
-      *ngFor="let i of dados.content; index as y"
-      class="keen-slider__slide cardDepoimentoHome">
-       <article class="titulo">
-        {{i.main}}
-       </article>
-      </section>
-    </div>
   </div>
 </div>
+
+<div
+class="slideTextComponentWrapper"
+*ngIf="dados.type == 'ELENCO'">
+
+    <div class="slideWrapperElenco">
+      <div class="keen-slider" #sliderRef>
+        <section
+        *ngFor="let i of dados.content; index as y"
+        class="keen-slider__slide cardElenco">
+
+          <span class="iconElencoWrapper">
+            <img
+            class="iconElenco"
+            height="432px"
+            width="205px"
+            [src]="i.header" alt="icon">
+          </span>
+
+          <div class="descricao">
+            <article class="titulo">
+              {{i.main}}
+            </article>
+            <p class="subtitulo">
+              {{i.footer + y}}
+            </p>
+          </div>
+
+          <div class="callToActionButtons">
+            <a
+            class="talkWithUs"
+            [href]=""
+            target="_blank"
+            rel="noopener noreferrer">
+              Fale Conosco
+          </a>
+          <a
+            class="whatsapp"
+            [href]=""
+            target="_blank"
+            rel="noopener noreferrer">
+              Whatsapp
+          </a>
+          </div><!-- -->
+
+        </section>
+      </div>
+
+  </div>
+</div>
+

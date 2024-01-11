@@ -1,34 +1,73 @@
+<div class="mainWrapperaboutUs">
+  <tc-navbar></tc-navbar>
 
+  <section class="aboutUsDescicao">
+    <header class="aboutUsTitulo">
+      <h1>
+        <!-- Aqui fica titulo -->
+        Sobre Nós
+      </h1>
+    </header>
 
-<section class="sobreNosDescicao">
-  <header class="sobreNosTitulo">
-    <h1>
-      <!-- Aqui fica titulo -->
-    </h1>
-  </header>
+    <article class="aboutUsDescricao">
+      <p>
+        <!-- Aqui fica a descrição da página -->
+        Este escritório trabalha com advogados especializados em diversos ramos
+        do direito. De acordo com o seu problema, eu vou trazer o melhor
+        profissional disponível para trabalharmos uma solução.
+      </p>
+    </article>
+  </section>
 
-  <article class="sobreNosDescricao">
-  <p>
-    <!-- Aqui fica a descrição da página -->
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum saepe, aliquid rerum ipsam fuga ipsum id quasi corporis alias consequuntur quis.
-  </p>
-  </article>
-</section>
+  <!-- Aqui fica o carrousel que o cliente pediu -->
 
+  <section class="aboutUsDescicao">
+    <header class="aboutUsTitulo">
+      <!-- Aqui titulo do elenco -->
+      <h1>Elenco</h1>
+    </header>
+    <div class="slideWrapper">
+      <div class="keen-slider" #sliderRef>
+        <div
+          *ngFor="let i of dadosAreaAtuacao.content; index as y"
+          [class]="'keen-slider__slide cardElenco'">
+          <span class="iconElencoWrapper">
+            <img
+            class="iconElenco"
+            width="205px"
+            height="432px"
+            [src]="i.header" alt="icon">
+          </span>
 
-<!-- Aqui fica o carrousel que o cliente pediu -->
+          <div class="descricao">
+            <article class="titulo">
+              {{i.main}}
+            </article>
+            <p class="subtitulo">
+              {{i.footer}}
+            </p>
+          </div>
 
-<section class="sobreNosElenco">
-  <header>
-    <!-- Aqui titulo do elenco -->
-    <h2>Elenco</h2>
-  </header>
+          <div class="callToActionButtons">
+            <a
+            class="talkWithUs"
+            [href]=""
+            target="_blank"
+            rel="noopener noreferrer">
+              Fale Conosco
+          </a>
+          <a
+            class="whatsapp"
+            [href]=""
+            target="_blank"
+            rel="noopener noreferrer">
+              Whatsapp
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <article>
-  <!-- Aqui põe o carrousel -->
-    <tc-multi-cards [dados]="dadosAreaAtuacao">
-    </tc-multi-cards>
-  </article>
-  
-
-</section>
+  <tcv-footer></tcv-footer>
+</div>

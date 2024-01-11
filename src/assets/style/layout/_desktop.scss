@@ -1,13 +1,49 @@
 @import "./../core/_core_token.scss";
 @import "./../layout/_keyframes.scss";
 
+/* Todas as páginas Independente de  */
+div.mainWrapperHome{
+  width: 100vw;
+  height: auto;
+  background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
+  background-size: cover;
+}
+
+div.mainWrapperaboutUs{
+  width: 100vw;
+  height: auto;
+  background: url(../../../assets/imgs/backgrounds/BG_SobreNos_.png) no-repeat center center;
+  background-size: cover;
+}
+
+div.mainWrapperPostagem{
+  width: 100vw;
+  height: auto;
+  background: url(../../../assets/imgs/backgrounds/BG_Postagens_.png) no-repeat center center;
+  background-size: cover;
+}
+
+div.mainWrapperFaleConosco{
+  width: 100vw;
+  height: auto;
+  background: url(../../../assets/imgs/backgrounds/BG_FaleConosco_.png) no-repeat center center;
+  background-size: cover;
+}
+
+/* Titulos */
+
+h1,h2,h3{
+
+  background-image: linear-gradient(180deg, rgba(13,144,194,1) 20%, rgb(0, 94, 97)) ;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 @media screen and (min-width:768px) {
   //Páginas de Login e cadastro
   //Home
   //NavBar
-
-
-
   nav{
     div.faixaSuperior{
       display:flex;
@@ -55,6 +91,11 @@
       justify-content: space-between;
       padding: 1rem 2rem;
       color: $background-white;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8.9px);
+      -webkit-backdrop-filter: blur(8.9px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
 
       ul{
         display: flex;
@@ -67,6 +108,7 @@
           list-style-type: none;
           border-radius: 30px;
           transition:  0.3s ease-in-out;
+          font-weight: 600;
           &:hover{
             background-color: #cccccc2e;
           }
@@ -75,19 +117,7 @@
     }
   }
 
-  div.mainWrapperHome{
-    width: 100vw;
-    height: 500vh;
-    background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
-    background-size: cover;
-  }
 
-  div.mainWrapperSobreNos{
-    width: 100vw;
-    height: 100vh;
-    background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
-    background-size: cover;
-  }
 
 
   section.apresentacao1{
@@ -242,16 +272,22 @@
     .depoimentoPosition{
       width: 100%;
       display: flex;
-      column-gap: 4.62rem;
-      .profileWrapper{
+      flex-flow:column nowrap;
+      row-gap:  1.5rem;
+      height: 54rem;
+      overflow-y: auto;
+     /*  .profileWrapperFixed{
         display: flex;
         justify-content: center;
         align-items:center;
-        width: 32.375rem;
-        height: 45.5625rem;
+        width: 100%;
         border-radius: 1.25rem;
         background: linear-gradient(83deg, #0D292A 27.34%, #0D292A 84.43%);
         padding: 1.5rem;
+        position: fixed;
+        left: 1.5rem;
+        top: 20%;
+        transition: position 0.5s ease;
         .profile{
           display: flex;
           flex-direction: column;
@@ -281,12 +317,53 @@
             row-gap: 1.5rem;
           }
         }
+      } */
+      }
+      .profileWrapper{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 100%;
+        border-radius: 1.25rem;
+        background: linear-gradient(83deg, #0D292A 27.34%, #0D292A 84.43%);
+        padding: 1.5rem;
+        transition: position 0.5s ease;
+        .profile{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          border-radius: 1.25rem;
+          background: rgba(0, 0, 0, 0.80);
+          padding: 1.5rem;
+          row-gap: 1.5rem;
+          .profileImgWrapper{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            row-gap: 1.5rem;
+            .profileImg{
+              border-radius: 50%;
+              width: 5.5rem;
+              height: 5.5rem;
+            }
+          }
+          .profileText{
+            width: 100%;
+            display: flex;
+            align-items: start;
+            flex-flow: column wrap;
+            row-gap: 1.5rem;
+          }
+        }
       }
 
       .depoimentosWrapper{
         display: flex;
         flex-direction: column;
+        align-items: flex-end;
         width: 100%;
+        height: max-content;
         row-gap: 1.5rem;
 
         .depoimentosWrap{
@@ -328,10 +405,9 @@
 
 
 
-  }}
-
+  }
   .calltoAction{
-    margin: 8rem 0rem;
+    margin: 3rem 0rem;
     width: 100%;
     background: #0D292A;
     display: flex;
@@ -405,7 +481,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: .3s ease;
       column-gap: 1rem;
 
       span>img{
@@ -438,4 +513,83 @@
       padding: 0.8rem;
   }
 
+  div.mainWrapperaboutUs{
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 1.5rem;
+    max-width: 100vw;
+
+    section.aboutUsDescicao{
+      display: flex;
+      flex-flow: column;
+      margin: 0 20%;
+        header.aboutUsTitulo{
+          h1{
+            font-size: 48px;
+            font-weight: 500;
+          }
+        }
+          article{
+            p{
+              font-size: 24px;
+              color: #fff;
+            }
+          }
+        }
+
+  }
+
+
+
+  section.inHonorPageWrapper{
+    display: grid;
+    grid-template-columns: 55% 45%;
+    column-gap: 1rem;
+    margin: 4rem 0rem;
+    max-width: 100vw;
+    section.inHonorPicture{
+      display: grid;
+      justify-self: center;
+      align-items: center;
+      height: auto;
+      width: 100%;
+
+      img.inHonorImg{
+        border-radius: 80px;
+        height: 50rem;
+        width: 40rem;
+        justify-self: center;
+      }
+    }
+    section.inHonorText{
+      max-width: 41rem;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8.9px);
+      -webkit-backdrop-filter: blur(8.9px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      padding: 1.5rem;
+      border-radius: 16px;
+      h2.inHonorTitle{
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom:1.5rem;
+        text-transform: capitalize;
+      }
+
+      p.inHonorDesc{
+        font-size: 24px;
+        font-size: 500;
+        color: white;
+        letter-spacing: 1.6px;
+
+      }
+    }
+
+
+  }
+
 }
+
+
+

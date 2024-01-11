@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { MultCards } from 'src/app/models/cardContent';
 
 @Component({
@@ -8,7 +9,48 @@ import { MultCards } from 'src/app/models/cardContent';
 })
 export class HomeComponent {
 
+  @ViewChild('profile') profile!: ElementRef;
+  @ViewChild('statement') statement!: ElementRef;
+  @ViewChild('statementPosition') statementPosition!: ElementRef;
+
+
+  @HostListener('window:scroll',['$event'])
+  onWindowScroll(){
+   const profileElementPosition = this.getOffSet(this.profile.nativeElement);
+   const statementElementPosition = this.getOffSet(this.statement.nativeElement);
+   // Using ViewportScroller to get the scroll position
+   const scrollPosition = this.viewPortScroller.getScrollPosition()[1];
+    console.log('Posição do elemento',profileElementPosition.top);
+    console.log('Posição do depoimentp',statementElementPosition.top);
+    console.log('tamanho', this.statement);
+    console.log('Posição do scroll',scrollPosition);
+
+  }
+
+  private getOffSet(el:HTMLElement){
+    const rect = el.getBoundingClientRect();
+    return {
+      top:rect.top + window.scrollY,
+      left:rect.left + window.scrollX
+    }
+  }
+
+  private getSize(el:HTMLElement){
+    const rect = el.getBoundingClientRect();
+    return {
+      width:rect.width,
+      height:rect.height
+    }
+  }
+
+
+  constructor(private renderer:Renderer2,
+    private viewPortScroller:ViewportScroller){
+
+    }
+
   msgZap = 'Eai meu amigo bora me dar esse manei ?'
+
 
 
   dadosAreaAtuacao:MultCards ={

@@ -1,5 +1,5 @@
 export interface MultCards{
-  type:'ATUACAO' | 'DEPOIMENTO'
+  type:'ATUACAO' | 'DEPOIMENTO' | 'ELENCO'
   content:CardContent[]
   mode:string | "free" | "snap" | "free-snap" | "free" | "snap" | "free-snap" | undefined
   loop:boolean
