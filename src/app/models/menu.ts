@@ -13,7 +13,7 @@ export const MENU = [
   },
   {
     nome:'Artigos',
-    link:'/postagen'
+    link:'/artigos'
   },
   {
     nome:'Fale Conosco',

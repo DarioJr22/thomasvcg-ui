@@ -1,0 +1,70 @@
+
+
+
+:host{
+  z-index: 9999999999999999999999;
+  position: fixed;
+  right: 1rem;
+  top: 6rem;
+  width: 40%;
+}
+
+div{
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  overflow-y: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  animation: fadeInOut 0.2s ease-in-out alternate ;
+}
+
+
+.sucesso {
+  animation: fadeInOut 0.2s ease-in-out alternate ;
+
+  /* From https://css.glass */
+background: rgba(104, 159, 56, 0.52);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(104, 159, 56, 0.29);display: flex;
+
+}
+
+.erro {
+background: rgba(135, 30, 30, 0.26);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(135, 30, 30, 0.29);
+  animation: fadeInOut 0.2s ease-in-out alternate  ;
+}
+
+ .warn{
+background: rgba(224, 227, 11, 0.26);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(224, 227, 11, 0.29);
+
+}
+
+@keyframes fadeInOut {
+  0%{
+    transform: translate(5rem) ;
+    opacity: 0;
+  }
+
+
+  100%{
+    transform: translate(0rem) ;
+    opacity: 1;
+  }
+}

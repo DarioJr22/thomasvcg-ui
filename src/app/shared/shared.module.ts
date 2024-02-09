@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -16,9 +18,11 @@ import { RouterModule } from '@angular/router';
     MultiCardsComponent,
     ButtonComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NotificationComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     RouterModule
   ],
@@ -30,8 +34,11 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     MatIconModule,
     FooterComponent,
+    NotificationComponent
 
-
+  ],
+  providers:[
+    { provide: 'ttlDefault', useValue: 3000 }
   ]
 })
 export class SharedModule { }

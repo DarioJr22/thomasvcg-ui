@@ -105,7 +105,7 @@ overflow: hidden;
 
 .cardElenco{
   background-color: #1C1C1C;
-  padding:1.7rem;
+  padding:1.5rem;
   border-radius: 16px;
 
   .iconElencoWrapper{
@@ -120,11 +120,11 @@ overflow: hidden;
   }
 
   .descricao{
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
-
+    padding: 0.5rem;
 
 
     .titulo{

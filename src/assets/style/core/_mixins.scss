@@ -1,0 +1,11 @@
+@mixin generate-grid(
+$gutter-width,
+$numberColumns,
+$columnWidth:1fr,
+$rowWidth:1fr,
+$numberRows:1) {
+  display: grid;
+  grid-template-columns: repeat($numberColumns, $columnWidth);
+  grid-template-rows: repeat($numberRows, $rowWidth);
+  grid-gap: $gutter-width;
+}

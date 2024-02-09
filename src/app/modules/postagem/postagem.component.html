@@ -2,19 +2,67 @@
 <div class="mainWrapperPostagem">
   <tc-navbar></tc-navbar>
 
-<section class="postWapper">
+<section *ngIf="operation == 'LIST'" class="postListWapper">
   <header class="postagemTitle">
     <h1>
       <!-- Aqui fica titulo -->
       Artigos
     </h1>
+    <mat-icon [ngbTooltip]="'Escrever artigo'" (click)="changeOp('CREATE',Post[0])" class="icon">edit</mat-icon>
   </header>
 
-  <article class="PostList">
-    <ul>
-      <li></li>
+
+
+
+    <ul class="PostList">
+      <li class="postWapper" *ngFor="let postagem of Post">
+          <span (click)="changeOp('READ',postagem)" class="postTitle">
+            <h3 [ngbTooltip]="postagem.postDTO.title">{{postagem.postDTO.title}}</h3>
+          </span>
+          <p class="postSubTitle">{{postagem.postDTO.subtitle}}</p>
+          <p class="postData">{{postagem.postDTO.date}}</p>
+          <button class="readMore" (click)="changeOp('READ',postagem)">Ler Mais</button>
+      </li>
     </ul>
+
+</section>
+
+<!-- Operação de leitura -->
+
+<section
+*ngIf="
+operation == 'READ' ||
+operation == 'UPDATE'"
+class="postReadWapper">
+
+<span class="backHeader">
+  <mat-icon class="icon " (click)="changeOp('LIST',PostReading)" class="icon">arrow_back</mat-icon>
+</span>
+
+  <span class="tagWrapper">
+    <span class="tag" *ngFor="let tag of PostReading.postDTO.tags">{{tag}}</span>
+  </span>
+
+  <header  class="postagemTitle">
+    <h1>
+      <!-- Aqui fica titulo -->
+      {{PostReading.postDTO.title}}
+    </h1>
+  </header>
+
+  <span class="postSubTitle">
+    {{PostReading.postDTO.subtitle}}
+  </span>
+
+  <span class="postIcons">
+    <mat-icon class="icon">menu</mat-icon>
+    <mat-icon class="icon">share</mat-icon>
+  </span>
+
+  <article class="texto">
+    {{PostReading.postDTO.content}}
   </article>
+
 </section>
 
 

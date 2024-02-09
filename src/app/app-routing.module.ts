@@ -21,7 +21,7 @@ const routes: Routes = [
   loadChildren:()=> import('./modules/em-honra/em-honra.module').then(x => x.EmHonraModule)
 },
  {
-  path:'postagen',
+  path:'artigos',
   loadChildren:()=> import('./modules/postagem/postagem.module').then(x => x.PostagemModule)
 },
 {

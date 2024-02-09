@@ -1,0 +1,6 @@
+<ng-container *ngFor="let n of notifications">
+  <div #notification [attr.class]="n.type">
+    {{n.message}}
+    <a style="cursor: pointer;" (click)="close(n.id,notification)">close</a>
+  </div>
+</ng-container>
