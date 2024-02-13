@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FaleConoscoComponent } from './faleconosco.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FaleConoscoRoutingModule } from './faleconosco-routing.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,9 +13,15 @@ import { FaleConoscoRoutingModule } from './faleconosco-routing.module';
     FaleConoscoComponent
   ],
   imports: [
+    NgxMaskDirective,
+    NgxMaskPipe,
     CommonModule,
     SharedModule,
-    FaleConoscoRoutingModule
+    FaleConoscoRoutingModule,
+    FormsModule
+  ],
+  providers:[
+    provideNgxMask()
   ]
 })
 export class FaleconoscoModule { }
