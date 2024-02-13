@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, catchError, throwError } from "rxjs";
 import { API } from "../../models/config";
 
 
@@ -34,8 +34,33 @@ export class PostService {
     return this.http.get(`${API.DEV}/post`,this.httpOptions);
   };
 
+  getTags(){
+    return this.http.get(`${API.DEV}/post/tags`,this.httpOptions)
+  }
+
   putArticle(user:any){
     return this.http.put(`${API.DEV}/post`,user,this.httpOptions);
+  }
+
+  postTags(tag:string){
+    return this.http.post(`${API.DEV}/post/tags/${tag}`,{},this.httpOptions)
+  }
+
+  putTags(newTag:string,oldTag:string){
+    return this.http.put(`${API.DEV}/post/tags`,{
+      newTag:newTag,
+      oldTag:oldTag
+    },this.httpOptions)
+  }
+
+  deleteTags(tag:string){
+    return this.http.delete(`${API.DEV}/post/tags/${tag}`,this.httpOptions)
+    .pipe(
+      catchError(error => {
+        console.error('Erro ao processar a resposta:', error);
+        return throwError('Erro ao processar a resposta do servidor.');
+      })
+    );
   }
 
 

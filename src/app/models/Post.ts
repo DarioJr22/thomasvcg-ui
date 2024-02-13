@@ -1,3 +1,4 @@
+import { Operation } from './Operation';
 export interface Post{
   postDTO:{
     id:string;
@@ -7,5 +8,10 @@ export interface Post{
     tags:string[];
     date:string;
   }
+}
+
+export interface TagHandler{
+  tag:string
+  operation:Operation
 }
 

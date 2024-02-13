@@ -1,14 +1,37 @@
 
 <div class="mainWrapperPostagem">
   <tc-navbar></tc-navbar>
+<!--
 
+  - [x] Recuperar todas as tags
+  - [ ] Cabeçalho de post
+  - [x] Criar Tags
+  - [x] Deletar Tags
+  - [x] Atualizar Tags
+  - [x] Criar ambiente de edição markdown para posts
+  - [ ] Corrigir Markdown para posts
+    - [x] Listas
+    - [ ] Tabelas
+    - [ ] Citação
+    - [ ] Italico
+    - [ ] Posicionamento
+    - [x] Imagens
+    - [x] Links
+  - [ ] Leitura de Markdown para posts
+  - [ ] Publicação do post
+  - [ ] Ler Posts
+
+
+
+ -->
+<!-- Operação de listagem de artigos -->
 <section *ngIf="operation == 'LIST'" class="postListWapper">
   <header class="postagemTitle">
     <h1>
       <!-- Aqui fica titulo -->
       Artigos
     </h1>
-    <mat-icon [ngbTooltip]="'Escrever artigo'" (click)="changeOp('CREATE',Post[0])" class="icon">edit</mat-icon>
+    <mat-icon [ngbTooltip]="'Escrever artigo'" (click)="changeOp('CREATE',PostReading)" class="icon">edit</mat-icon>
   </header>
 
 
@@ -27,8 +50,8 @@
 
 </section>
 
-<!-- Operação de leitura -->
 
+<!--- Operação de leitura de artigos ---->
 <section
 *ngIf="
 operation == 'READ' ||
@@ -60,13 +83,107 @@ class="postReadWapper">
   </span>
 
   <article class="texto">
-    {{PostReading.postDTO.content}}
+    <markdown [data]="PostReading.postDTO.content"></markdown>
   </article>
 
 </section>
 
+<!--- Operação de Criacao de artigos ---->
 
-<!-- Aqui fica o carrousel que o cliente pediu -->
+<section
+*ngIf="operation == 'CREATE'"
+class="postCreateWapper">
+<span class="backHeader">
+  <mat-icon class="icon" (click)="changeOp('LIST',PostReading)" class="icon">arrow_back</mat-icon>
+</span>
 
+  <span *ngIf="PostReading.postDTO.tags.length > 0" class="tagWrapper">
+    <span  class="tag" *ngFor="let tag of PostReading.postDTO.tags">{{tag}}</span>
+  </span>
+
+
+
+  <header  class="postagemTitle">
+    <!-- Titulo -->
+    <span>
+      <label for="title">Titulo</label>
+      <input
+      for="title"
+      type="text"
+      class="form-control w-100"
+      [(ngModel)]="PostReading.postDTO.title">
+    </span>
+
+    <!-- SubTitulo -->
+    <span class="postSubTitle">
+      <label for="title">Subtitulo</label>
+      <input
+      for="title"
+      type="text"
+      class="form-control w-100"
+      [(ngModel)]="PostReading.postDTO.subtitle">
+    </span>
+
+    <!-- Tags -->
+    <span class="tag-input">
+      <label for="tags" class="form-label">Tags</label>
+      <span class="d-flex">
+        <select #tagsInput (click)="addtag(tagsInput.value)" id="tags" class="form-select w-100" [multiple]="true">
+            <option *ngFor="let name of tags" [value]="name">
+              {{name}}
+            </option>
+        </select>
+        <mat-icon class="tagManager" (click)="modalTagsManager(content)" [ngbTooltip]="'Gerenciar tags'">settings</mat-icon>
+      </span>
+    </span>
+
+  </header>
+
+  <article class="texto">
+
+    <angular-markdown-editor
+    [textareaId]="'editor1'"
+    name="markdownText"
+    [rows]="20"
+    [options]="editorOptions"
+    [(ngModel)]="markdownText">
+    </angular-markdown-editor>
+  </article>
+  <span>
+    <mat-icon class="icon " (click)="createPost()" class="icon">arrow_back</mat-icon>
+  </span>
+</section>
+
+<!-- Modal de gerenciamento de tags -->
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Gerenciador de tags</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss(false)"></button>
+	</div>
+	<div class="modal-body">
+		<!-- Listage, Deleção e inclusão de tags -->
+    <table class="table-tagmanager" aria-labelledby="Tabela de gerenciamento de tags">
+      <th>
+        TAG
+      </th>
+      <th colspan="2">
+        AÇÕES
+      </th>
+      <tr *ngFor="let data of tagHandler">
+        <td *ngIf="data.operation == 'LIST'">{{data.tag}}</td>
+        <td *ngIf="data.operation == 'LIST'"><mat-icon (click)="editToggle(data)" ngbTooltip="Editar tag">edit</mat-icon></td>
+        <td *ngIf="data.operation == 'LIST'"><mat-icon (click)="deleteTag(data.tag)" ngbTooltip="Deletar tag">delete</mat-icon></td>
+        <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><input type="text" [(ngModel)]="data.tag"></td>
+        <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><mat-icon ngbTooltip="Editar tag" (click)="save(data)">done</mat-icon></td>
+        <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><mat-icon ngbTooltip="Cancelar edição" (click)="editToggle(data)">cancel</mat-icon></td>
+      </tr>
+    </table>
+    <span (click)="create()" class="addTag"><mat-icon>add</mat-icon></span>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(true)">Fechar</button>
+	</div>
+</ng-template>
 <tcv-footer></tcv-footer>
 </div>
