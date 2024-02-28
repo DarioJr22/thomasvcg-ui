@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NotificationComponent } from './notification/notification.component';
+import { MenuToggleComponent } from './menu-toggle/menu-toggle.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,12 +21,15 @@ import { NotificationComponent } from './notification/notification.component';
     ButtonComponent,
     NavbarComponent,
     FooterComponent,
-    NotificationComponent
+    NotificationComponent,
+    MenuToggleComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    NgbTooltipModule
   ],
   exports:[
 
@@ -34,7 +39,8 @@ import { NotificationComponent } from './notification/notification.component';
     NavbarComponent,
     MatIconModule,
     FooterComponent,
-    NotificationComponent
+    NotificationComponent,
+    MenuToggleComponent
 
   ],
   providers:[

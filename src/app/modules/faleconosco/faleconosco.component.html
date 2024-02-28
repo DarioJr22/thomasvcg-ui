@@ -7,7 +7,8 @@
   - [x] Recuperação do CEP automaticamente
   - [x] Recuperar UFs
   - [ ] Validações do formulário
-  - [ ] Envio do formulário
+  - [x] Envio do formulário
+    - [x] Fazer criação do contato pegando o id do cliente
   - [ ] Formas de recuperar os dados do formulário-->
 
   <section class="formFaleConosco">
@@ -18,88 +19,106 @@
           Fale Conosco
         </h1>
         <h4>Preencha alguns dados e nos envie para que nossa equipe possa entrar em contato o quanto antes</h4>
-        <span class="input-name">
-          <label for="name">Nome</label>
-          <input required name="name" [(ngModel)]="contatoModel.costumerName" type="text" class="form-control">
-        </span>
-        <span class="input-relacao">
-          <label for="relationship">Estado civil</label>
-          <select name="relationship" [(ngModel)]="contatoModel.relationship" class="form-select">
-            <option>Escolha um estado civil</option>
-            <option>SOLTEIRO</option>
-            <option>CASADO</option>
-            <option>DIVORCIADO</option>
-            <option>VIUVO</option>
-          </select>
-        </span>
-        <span class="input-rg">
-          <label for="rg">RG</label>
-          <input required name="rg" mask="0.000.000" placeholder="0.000.000" type="text" [(ngModel)]="contatoModel.rg" class="form-control">
-        </span>
-        <span class="input-cpf">
-          <label for="cpf">CPF</label>
-          <input required name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" type="text" [(ngModel)]="contatoModel.cpf" class="form-control">
-        </span>
+        <fieldset class="costumerFormGroup">
 
-        <span class="CEPformGroup">
-          <span class="input-cep">
-            <label for="cep">CEP</label>
-            <input required (keyup)="getCep(contatoModel.address.cep)" type="text" name="cep" mask="00000-000" placeholder="00000-000"  [(ngModel)]="contatoModel.address.cep" class="form-control">
-            <span class="error" *ngIf="contatoModel.address.invalidCep">
-              <p>CEP Inválido</p>
-            </span>
+          <span class="input-name">
+            <label for="name">Nome</label>
+            <input required name="name" placeholder="Nome" [(ngModel)]="costumerModel.costumerName" type="text" class="form-control">
           </span>
 
-          <span class="input-rua">
-            <label for="street">Rua</label>
-            <input name="street" type="text" [(ngModel)]="contatoModel.address.street" class="form-control">
+          <span class="email">
+            <label for="email">Email</label>
+            <input required name="email"  placeholder="meuemail@email.com" type="text" [(ngModel)]="costumerModel.email" class="form-control">
           </span>
 
-          <span class="input-nm">
-            <label for="number">Nº</label>
-            <input name="number" type="text" [(ngModel)]="contatoModel.address.number" class="form-control">
+          <span class="contato">
+            <label for="contato">Numero de contato</label>
+            <input required name="contato" mask="(00) 00000-0000"  placeholder="(00) 00000-0000" type="text" [(ngModel)]="costumerModel.contact" class="form-control">
           </span>
 
-          <span class="input-complemento">
-            <label for="complemento">Complemento</label>
-            <input name="complemento" type="text" [(ngModel)]="contatoModel.address.complement" class="form-control">
+          <span>
+            <label for="birthday">Data de aniversário</label>
+            <input type="date" name="birthday"  class="form-control" [(ngModel)]="costumerModel.birtday" id="">
           </span>
 
-          <span class="input-cidade">
-            <label for="city">Cidade</label>
-            <input name="city" type="text" [(ngModel)]="contatoModel.address.city" class="form-control">
-          </span>
-
-          <span class="input-uf">
-            <label for="uf">UF</label>
-            <select  name="uf" type="text"  [(ngModel)]="contatoModel.address.uf" class="form-select">
-              <!-- API estados -->
-              <option *ngFor="let i of UF" [value]="i">{{i}}</option>
+          <span class="input-relacao">
+            <label for="relationship">Estado civil</label>
+            <select name="relationship" [(ngModel)]="costumerModel.relationship" class="form-select">
+              <option>Escolha um estado civil</option>
+              <option>SOLTEIRO</option>
+              <option>CASADO</option>
+              <option>DIVORCIADO</option>
+              <option>VIUVO</option>
             </select>
           </span>
+         <!--  <span class="input-rg">
+            <label for="rg">RG</label>
+            <input required name="rg" mask="0.000.000" placeholder="0.000.000" type="text" [(ngModel)]="costumerModel.rg" class="form-control">
+          </span> -->
+          <span class="input-cpf">
+            <label for="cpf">CPF</label>
+            <input required name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" type="text" [(ngModel)]="costumerModel.cpf" class="form-control">
+          </span>
+        </fieldset>
+        <fieldset>
+          <span class="CEPformGroup">
+            <span class="input-cep">
+              <label for="cep">CEP</label>
+              <input required (keyup)="getCep(costumerModel.address.cep)" type="text" name="cep" mask="00000-000" placeholder="00000-000"  [(ngModel)]="costumerModel.address.cep" class="form-control">
+              <span class="error" *ngIf="costumerModel.address.invalidCep">
+                <p>CEP Inválido</p>
+              </span>
+            </span>
 
+            <span class="input-rua">
+              <label for="street">Rua</label>
+              <input name="street" type="text" [(ngModel)]="costumerModel.address.street" class="form-control">
+            </span>
 
-        </span>
+            <span class="input-nm">
+              <label for="number">Nº</label>
+              <input name="number" type="text" [(ngModel)]="costumerModel.address.number" class="form-control">
+            </span>
+
+            <span class="input-complemento">
+              <label for="complemento">Complemento</label>
+              <input name="complemento" type="text" [(ngModel)]="costumerModel.address.complement" class="form-control">
+            </span>
+
+            <span class="input-cidade">
+              <label for="city">Cidade</label>
+              <input name="city" type="text" [(ngModel)]="costumerModel.address.city" class="form-control">
+            </span>
+
+            <span class="input-uf">
+              <label for="uf">UF</label>
+              <select  name="uf" type="text"  [(ngModel)]="costumerModel.address.uf" class="form-select">
+                <!-- API estados -->
+                <option *ngFor="let i of UF" [value]="i">{{i}}</option>
+              </select>
+            </span>
+          </span>
+        </fieldset>
 
         <span>
           <label for="descricao">Descreva seu caso</label>
           <textarea
           placeholder="Descreva seu caso"
-          [(ngModel)]="contatoModel.descricao"
+          [(ngModel)]="costumerModel.descricao"
           name="description"
           class="form-control"
           rows="10"></textarea>
         </span>
 
         <span class="callToActionButtons">
-          <button class="talkWithUs">
+          <a (click)="sendContact()" class="talkWithUs">
             <span><img src="../../../assets/imgs/icons/ChatIcon.svg" alt="Chat"></span>
             <p>Contate-nos</p>
-          </button>
-          <button class="whatsapp">
+          </a>
+          <a target="_blank" [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msgZap" class="whatsapp">
             <span><img src="../../../assets/imgs/icons/whatsapp-svgrepo-com.svg" alt="Whatsapp"></span>
             <p>Whatsapp</p>
-          </button>
+          </a>
         </span>
       </span>
 

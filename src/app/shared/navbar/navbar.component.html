@@ -41,9 +41,15 @@
   </div>
 
   <div class="faixaInferior">
-    <div [routerLink]="['/home']" class="logo">
-      <img src="../../../assets/imgs/Logo_cropped.png" height ="135px" width="135px" alt="logo">
+
+
+    <div [routerLink]="['/']" class="logo">
+      <img src="../../../assets/imgs/Logo_cropped.png" [height]="logo.height" [width]="logo.width" alt="logo">
     </div>
+
+    <span >
+      <tcv-menu-toggle></tcv-menu-toggle>
+    </span>
 
 
       <ul class="menuOpt">

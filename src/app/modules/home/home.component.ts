@@ -1,57 +1,42 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
-import { MultCards } from 'src/app/models/cardContent';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { CardContent, MultCards } from 'src/app/models/cardContent';
+import { HomeService } from './home.service';
+import { Reviews } from '../../models/reviews';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-
+export class HomeComponent implements OnInit {
+  reviews:Reviews[] = [];
   @ViewChild('profile') profile!: ElementRef;
   @ViewChild('statement') statement!: ElementRef;
   @ViewChild('statementPosition') statementPosition!: ElementRef;
 
 
-  @HostListener('window:scroll',['$event'])
-  onWindowScroll(){
-   const profileElementPosition = this.getOffSet(this.profile.nativeElement);
-   const statementElementPosition = this.getOffSet(this.statement.nativeElement);
-   // Using ViewportScroller to get the scroll position
-   const scrollPosition = this.viewPortScroller.getScrollPosition()[1];
-    console.log('Posição do elemento',profileElementPosition.top);
-    console.log('Posição do depoimentp',statementElementPosition.top);
-    console.log('tamanho', this.statement);
-    console.log('Posição do scroll',scrollPosition);
 
-  }
-
-  private getOffSet(el:HTMLElement){
-    const rect = el.getBoundingClientRect();
-    return {
-      top:rect.top + window.scrollY,
-      left:rect.left + window.scrollX
-    }
-  }
-
-  private getSize(el:HTMLElement){
-    const rect = el.getBoundingClientRect();
-    return {
-      width:rect.width,
-      height:rect.height
-    }
-  }
 
 
   constructor(private renderer:Renderer2,
-    private viewPortScroller:ViewportScroller){
+    private viewPortScroller:ViewportScroller,
+    private homeService:HomeService,
+    private modalService:NgbModal) {
 
     }
+  ngOnInit(): void {
+   this.getReviews()
+  }
 
-  msgZap = 'Eai meu amigo bora me dar esse manei ?'
+  msg = 'Eai meu amigo bora me dar esse manei ?'
 
-
+  modalContent = {
+    title:'Area de atuação',
+    content:'',
+    icon:''
+  }
 
   dadosAreaAtuacao:MultCards ={
     type: 'ATUACAO',
@@ -107,47 +92,59 @@ export class HomeComponent {
         }
       ],
     mode: 'free',
-    loop: true,
+    loop: false,
     perView: 3,
-    spacing: 15,
+    spacing: 20,
   }
 
 
-  dadosDepoimento:MultCards = {
-    type: 'DEPOIMENTO',
-    content: [
-        {
-          header:'./../../../assets/imgs/icons/telefone.svg',
-          main:'Direito Civil',
-          footer:'lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium',
-          type:'DEPOIMENTO',
-          bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
+    /* Reviews */
+    getReviews(){
+      this.homeService.getReviews().subscribe(
+      {
+        next:(data:any)=>{
+          this.reviewsConverter(JSON.parse(data.body))
+          console.log(this.reviews);
+
+
+
         },
-        {
-          header:'./../../../assets/imgs/icons/telefone.svg',
-          main:'Direito Crimina',
-          footer:'lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium',
-          type:'DEPOIMENTO',
-          bg:'./../../../assets/imgs/visualComponents/AreaAruacao2.png'
-        },
-        {
-          header:'./../../../assets/imgs/icons/telefone.svg',
-          main:'Direito Trabalhista',
-          footer:'lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium',
-          type:'DEPOIMENTO',
-          bg:'./../../../assets/imgs/visualComponents/AreaAruacao3.png'
-        },
-        {
-          header:'./../../../assets/imgs/icons/telefone.svg',
-          main:'Direito Empresarial',
-          footer:'lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium lorem ipsium',
-          type:'DEPOIMENTO',
-          bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
-        }
-      ],
-    mode: 'free',
-    loop: true,
-    perView: 3,
-    spacing: 15,
+        error:(error)=>{console.error(error)},
+
+      }
+    )
+
+  /*
+    let url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJLaOg3Tc9qwcRTemoMuGJ6Rc&key=AIzaSyASuNXEP27EUkWhCHt7UzJVYuy7bc5HxVA';
+    fetch( url)
+    .then(response => response.json())
+    .then(contents => console.log(contents))
+    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?")) */
+  }
+
+  reviewsConverter(reviews:any){
+  let reviewsTemp = []
+  reviewsTemp = reviews.result.reviews
+  reviewsTemp.forEach((i:any) => {
+        this.reviews.push(i)
+      }
+    );
+
+  this.reviews.forEach((i)=>{
+    i.rating = Array(i.rating).fill(i.rating).map((x,y)=>y)
+  })
+  }
+
+  selectCard(template:any,dados:CardContent){
+    console.log(dados);
+
+    this.modalContent.title = dados.main
+    this.modalContent.content = dados.footer
+    this.modalContent.icon = dados.header
+    this.modalService.open(template,{
+      scrollable:true,
+      modalDialogClass: 'custom-class',
+      centered: true
+     })
   }
 }

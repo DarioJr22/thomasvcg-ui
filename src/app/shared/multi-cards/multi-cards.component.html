@@ -1,22 +1,25 @@
 <div
 class="slideTextComponentWrapper"
-*ngIf="dados.type == 'ATUACAO' " >
+*ngIf="dados.type == 'ATUACAO' "  >
 
-  <div class="fraseDestaqueAreaAtuacao">
+ <!--  <div class="fraseDestaqueAreaAtuacao">
 
       <h1  class="fraseDestaqueAreaAtuacaoText" [@fadeInTop]="frasesAtuacao" >
         {{frasesAtuacao}}
       </h1>
 
 
-  </div>
-
+  </div> -->
   <div class="slideWrapperAtuacao">
-    <div class="keen-slider" #slideRefAreas>
+    <div class="slideWrapperColumn">
       <section
-      [style]="'background: url('+i.bg+' )  no-repeat center center; background-size: cover'"
+      [style]="
+      'background: url('+i.bg+' )  no-repeat center center;'
+     +'background-size: 150%; border-radius: 16px;'
+     + 'margin-bottom: 1.5rem;'  "
       *ngFor="let i of dados.content; index as y"
-      class="keen-slider__slide cardAreaAtuacao">
+      class="cardAreaAtuacao"
+      (click)="selectCard(i)">
        <span class="iconAreaAtuacaoWrapper">
            <img
            class="iconAreaAtuacao"
@@ -28,6 +31,39 @@ class="slideTextComponentWrapper"
        <article class="destaque">
          {{i.main}}
        </article>
+
+       <article >
+        <p class="hover-underline-animation">Saiba mais</p>
+      </article>
+      <!---->
+
+      </section>
+    </div>
+    <div  class="keen-slider" #slideRefAreas>
+      <section
+
+      [style]="
+      'background: url('+i.bg+' )  no-repeat center center;'
+     +'background-size: 140%; border-radius: 16px'
+      "
+      *ngFor="let i of dados.content; index as y"
+      class="keen-slider__slide cardAreaAtuacao"
+      (click)="selectCard(i)">
+       <span class="iconAreaAtuacaoWrapper">
+           <img
+           class="iconAreaAtuacao"
+           height="100"
+           width="100"
+           [src]="i.header" alt="icon">
+       </span>
+
+       <article class="destaque">
+         {{i.main}}
+       </article>
+
+       <article >
+        <p class="hover-underline-animation">Saiba mais</p>
+      </article>
       <!---->
 
       </section>

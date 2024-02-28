@@ -47,7 +47,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 <section class="apresentacao1">
   <div class="descricaoWrapper">
     <div class="descricao">
-      <h1 class="titulo">Resolva sua
+      <h1 class="titulo">Resolva sua:
 
         <span class="wrapper">
 
@@ -57,8 +57,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
             <li><span class="destaque">Reconciliação familiar</span></li>
             <li><span class="destaque">Alguma coisa juridica</span></li>
           </ul>
-        </span>
-      de forma ágil !</h1>
+        </span></h1>
 
         <article>
           É um prazer ter você conosco.
@@ -75,14 +74,16 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
         </article>
         <a
         target="_blank"
-        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msgZap"
+        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg"
         class="apresentacaoButton1"
         [type]="'APRESENTACAO'">
           Contate-nos Agora
         </a>
     </div>
     <span class="imgThomas1">
+      <span class="fade"> </span>
       <img src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
+
     </span>
 
   </div>
@@ -102,6 +103,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
   <tc-multi-cards
   class="multiCardsAreaAtuacao"
+  (selectedCard)="selectCard(content,$event)"
   [dados]="dadosAreaAtuacao">
   </tc-multi-cards>
 </section>
@@ -110,64 +112,28 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
 <section class="depoimentosHome">
     <span class="depoimentoTitle">
-        <h2 class="destaque">
-          Depoimentos
+        <h2 [routerLink]="['/depoimentos']" class="destaque">
+          Depoimentos  <a style="font-size: 15px; text-decoration: underline;" target="_blank" href="https://www.google.com/maps/place/Thomas+Cris%C3%B3stomo+-+Advocacia/@-8.0035888,-34.8453844,21z/data=!4m8!3m7!1s0x7ab3d37dda0a32d:0x17e989e132a8e94d!8m2!3d-8.0035407!4d-34.8452879!9m1!1b1!16s%2Fg%2F11dflg6s40?entry=ttu">Ver todos</a>
         </h2>
+
     </span>
     <div #statementPosition class="depoimentoPosition">
       <section #profile class="profileWrapper">
-        <section class="profile">
+        <section *ngFor="let i of reviews" class="profile">
           <span class="profileImgWrapper">
-            <img class="profileImg" src="../../../assets/imgs/ThomasVcg_profile.png" alt="profile">
+            <img class="profileImg" [src]="i.profile_photo_url"  alt="profile">
           </span>
           <article class="profileText">
-            <h3>Thomas Crisóstomo</h3>
-            <h5>Advogado</h5>
-            <p>Um dos membros do time.</p>
+            <h3>{{i.author_name}}</h3>
+            <!-- Descrição relativa ao tempo -->
+            <h5>{{i.relative_time_description}}</h5>
+            <!-- Estrelas  -->
+            <span class="d-flex">
+              <mat-icon class="star" *ngFor="let j of i.rating">star</mat-icon>
+            </span>
+            <!-- Review -->
+            <p class="review">{{i.text}}</p>
           </article>
-        </section>
-      </section>
-      <section #statement class="depoimentosWrapper">
-        <!-- Iterator de depoimentos -->
-        <section class="depoimentosWrap">
-          <span class="quoteWrapper">
-            <p>lorem loremloremloremloremloremlorem</p>
-            <span class="quoteAutor">
-              <p> Fulano teves</p>
-            </span>
-          </span>
-        </section>
-        <section class="depoimentosWrap">
-          <span class="quoteWrapper">
-            <p>lorem loremloremloremloremloremlorem</p>
-            <span class="quoteAutor">
-              <p> Fulano teves</p>
-            </span>
-          </span>
-        </section>
-        <section class="depoimentosWrap">
-          <span class="quoteWrapper">
-            <p>lorem loremloremloremloremloremlorem</p>
-            <span class="quoteAutor">
-              <p> Fulano teves</p>
-            </span>
-          </span>
-        </section>
-        <section class="depoimentosWrap">
-          <span class="quoteWrapper">
-            <p>lorem loremloremloremloremloremlorem</p>
-            <span class="quoteAutor">
-              <p> Fulano teves</p>
-            </span>
-          </span>
-        </section>
-        <section class="depoimentosWrap">
-          <span class="quoteWrapper">
-            <p>lorem loremloremloremloremloremlorem</p>
-            <span class="quoteAutor">
-              <p> Fulano teves</p>
-            </span>
-          </span>
         </section>
       </section>
     </div>
@@ -177,9 +143,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
 <section class="calltoAction">
   <span class="calltoActionTitle">
-    <h5 class="destaque">
-      Tem alguma duvida ?
-    </h5>
+    Tem alguma duvida ?
   </span>
   <span class="callToActionButtons">
     <button class="talkWithUs">
@@ -193,4 +157,29 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
   </span>
 </section>
 <tcv-footer></tcv-footer>
+<ng-template #content class="customModal" let-modal>
+  <div style="background-color:#0d292a; color: white" class="modal-header d-flex align-items-center">
+    <span class="mr-1"><img [src]="this.modalContent.icon" height="35px" width="35px"></span>
+    <h4 class="modal-title" id="modal-basic-title">{{this.modalContent.title == 'Família' ?  'Direito da ' + this.modalContent.title : 'Direito ' + this.modalContent.title}}</h4>
+    <mat-icon style="color: #fff; cursor: pointer;" aria-label="Close" (click)="modal.dismiss(false)" class="mat-18">close</mat-icon>
+
+  </div>
+  <div style="background-color: #0d292a; color: white; height: auto;" class="modal-body">
+    {{this.modalContent.content}}
+  </div>
+
+  <div style="background-color: #0d292a;
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;" class="modal-footer">
+    <a
+        target="_blank"
+        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg"
+        class="apresentacaoButton1"
+        [type]="'APRESENTACAO'">
+          Falar com especialista
+        </a>
+  </div>
+</ng-template>
 </div>

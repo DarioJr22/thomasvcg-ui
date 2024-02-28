@@ -1,5 +1,67 @@
 @import '../../../assets/style/layout/_keyframes.scss';
 
+@media screen and (max-width:768px) {
+
+  .slideWrapperColumn{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+.slideTextComponentWrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+
+.fraseDestaqueAreaAtuacao{
+  width:75% !important;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem !important;
+  h1{
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    color: #fff;
+   }
+}
+
+.slideWrapperAtuacao{
+  width: 100% !important;
+}
+
+}
+
+@media screen and (min-width:768px){
+
+  .slideWrapperColumn{
+    display: none;
+    flex-flow: column nowrap;
+    row-gap: 1rem;
+    align-items: center;
+  }
+
+  .cardAreaAtuacao{
+    width: 75% !important;
+    margin-bottom: 1rem;
+  }
+}
+
+.controlButtons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.active{
+  height: 100rem !important;
+  opacity: 1 !important;
+  transform: scale(1.5);
+}
+
 
 /* Aqui se controla o tamanho dos Cards */
 [class^="number-slide"],
@@ -18,11 +80,18 @@
 
 
 }
-
+/*
+.keen-slider__slide{
+  height: 20rem !important;
+  width: 10rem !important   ;
+border-radius: 10px !important;
+}
+ */
 .slideWrapper{
   width: auto;
   overflow-x: hidden;
 }
+
 
 
 
@@ -38,11 +107,10 @@
   width: 100%;
 box-sizing: border-box;
 padding: 1rem 0rem;
-cursor: pointer;
-
 
 
 }
+
 .cardsAreaWrapper{
 display: flex;
 width: 100vw;
@@ -52,7 +120,7 @@ justify-content: space-around;
 
 
 .cardAreaAtuacao {
-  border-radius: 7px;
+
  height: 23rem !important;
   width: 20rem;
   padding: 2rem;
@@ -72,6 +140,12 @@ justify-content: space-around;
   article.descricao, button{
     opacity: 0;
     transition:  .3s ease-out;
+  }
+  cursor: pointer;
+  transition: opacity .1s ease-out;
+  &:hover{
+    opacity: 0.9;
+    transition: opacity .1s ease-out;
   }
 
 }
@@ -137,16 +211,25 @@ svg{
 article.destaque{
   font-size: 27px;
   transition: .1s ease;
+}
 
+article.destaque p{
+  font-size: 13px;
+}
+
+.iconAreaAtuacaoWrapper{
+   transition: .1s ease;
   &:hover{
     transform: scale(1.1);
     transition: .1s ease;
   }
 }
 
+
 .slideWrapperAtuacao{
-  width: 60%;
-  overflow: hidden;
+overflow: hidden;
+  width: 100%;
+
 }
 
 .slideWrapperElenco{
@@ -266,4 +349,30 @@ article.destaque{
       }
     }
   }
+  }
+
+  //Hover underline anm
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }

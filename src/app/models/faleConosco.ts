@@ -1,6 +1,8 @@
 import { User } from "../modules/login/login.component";
 
-export interface FaleConosco{
+
+export interface CostumerDTO{
+  id?:number,
   costumerName:string,
   relationship:RelationShip,
   email:string,
@@ -11,6 +13,11 @@ export interface FaleConosco{
   address:Address,
   descricao:string,
   User:User
+}
+export interface ContactDTO{
+   contact_content:string,
+  arq_content:string,
+  costumer?:CostumerDTO
 }
 
 
