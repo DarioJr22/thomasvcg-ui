@@ -24,7 +24,7 @@
 
   <!-- Aqui fica o carrousel que o cliente pediu -->
 
-  <section class="aboutUsDescicao">
+  <section class="aboutUsCasting">
     <header class="aboutUsTitulo">
       <!-- Aqui titulo do elenco -->
       <h1>Elenco</h1>
@@ -54,14 +54,13 @@
           <div class="callToActionButtons">
             <a
             class="talkWithUs"
-            [href]=""
-            target="_blank"
+            [routerLink]="['/faleconosco']"
             rel="noopener noreferrer">
-              Fale Conosco
+              contate-nos
           </a>
           <a
             class="whatsapp"
-            [href]=""
+            [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg"
             target="_blank"
             rel="noopener noreferrer">
               Whatsapp

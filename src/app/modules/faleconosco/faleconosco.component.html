@@ -23,22 +23,22 @@
 
           <span class="input-name">
             <label for="name">Nome</label>
-            <input required name="name" placeholder="Nome" [(ngModel)]="costumerModel.costumerName" type="text" class="form-control">
+            <input required name="name" placeholder="Nome" [(ngModel)]="costumerModel.costumerName" type="text">
           </span>
 
           <span class="email">
             <label for="email">Email</label>
-            <input required name="email"  placeholder="meuemail@email.com" type="text" [(ngModel)]="costumerModel.email" class="form-control">
+            <input required name="email"  placeholder="meuemail@email.com" type="text" [(ngModel)]="costumerModel.email">
           </span>
 
           <span class="contato">
             <label for="contato">Numero de contato</label>
-            <input required name="contato" mask="(00) 00000-0000"  placeholder="(00) 00000-0000" type="text" [(ngModel)]="costumerModel.contact" class="form-control">
+            <input required name="contato" mask="(00) 00000-0000"  placeholder="(00) 00000-0000" type="text" [(ngModel)]="costumerModel.contact">
           </span>
 
           <span>
             <label for="birthday">Data de aniversário</label>
-            <input type="date" name="birthday"  class="form-control" [(ngModel)]="costumerModel.birtday" id="">
+            <input type="date" name="birthday"  [(ngModel)]="costumerModel.birtday" id="">
           </span>
 
           <span class="input-relacao">
@@ -53,18 +53,18 @@
           </span>
          <!--  <span class="input-rg">
             <label for="rg">RG</label>
-            <input required name="rg" mask="0.000.000" placeholder="0.000.000" type="text" [(ngModel)]="costumerModel.rg" class="form-control">
+            <input required name="rg" mask="0.000.000" placeholder="0.000.000" type="text" [(ngModel)]="costumerModel.rg">
           </span> -->
           <span class="input-cpf">
             <label for="cpf">CPF</label>
-            <input required name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" type="text" [(ngModel)]="costumerModel.cpf" class="form-control">
+            <input required name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" type="text" [(ngModel)]="costumerModel.cpf">
           </span>
         </fieldset>
         <fieldset>
           <span class="CEPformGroup">
             <span class="input-cep">
               <label for="cep">CEP</label>
-              <input required (keyup)="getCep(costumerModel.address.cep)" type="text" name="cep" mask="00000-000" placeholder="00000-000"  [(ngModel)]="costumerModel.address.cep" class="form-control">
+              <input required (keyup)="getCep(costumerModel.address.cep)" type="text" name="cep" mask="00000-000" placeholder="00000-000"  [(ngModel)]="costumerModel.address.cep">
               <span class="error" *ngIf="costumerModel.address.invalidCep">
                 <p>CEP Inválido</p>
               </span>
@@ -72,22 +72,22 @@
 
             <span class="input-rua">
               <label for="street">Rua</label>
-              <input name="street" type="text" [(ngModel)]="costumerModel.address.street" class="form-control">
+              <input name="street" type="text" [(ngModel)]="costumerModel.address.street">
             </span>
 
             <span class="input-nm">
               <label for="number">Nº</label>
-              <input name="number" type="text" [(ngModel)]="costumerModel.address.number" class="form-control">
+              <input name="number" type="text" [(ngModel)]="costumerModel.address.number">
             </span>
 
             <span class="input-complemento">
               <label for="complemento">Complemento</label>
-              <input name="complemento" type="text" [(ngModel)]="costumerModel.address.complement" class="form-control">
+              <input name="complemento" type="text" [(ngModel)]="costumerModel.address.complement">
             </span>
 
             <span class="input-cidade">
               <label for="city">Cidade</label>
-              <input name="city" type="text" [(ngModel)]="costumerModel.address.city" class="form-control">
+              <input name="city" type="text" [(ngModel)]="costumerModel.address.city">
             </span>
 
             <span class="input-uf">
@@ -100,13 +100,12 @@
           </span>
         </fieldset>
 
-        <span>
+        <span class="input-descricao">
           <label for="descricao">Descreva seu caso</label>
           <textarea
           placeholder="Descreva seu caso"
           [(ngModel)]="costumerModel.descricao"
           name="description"
-          class="form-control"
           rows="10"></textarea>
         </span>
 

@@ -23,7 +23,7 @@ mat-icon{
 
 th{
   font-weight: 700;
-  border-bottom: 2px black solid;
+  border-bottom: 2px #fff solid;
 
 
 }
@@ -32,3 +32,68 @@ td{
   text-align: start;
   padding: 0.5rem;
 }
+
+
+input,select {
+  background-color: #111111;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  appearance: none;
+}
+input:focus-visible {
+  outline: #4CAF50 solid 1px;
+  transition: .1s ease;
+}
+
+select:focus-visible {
+  outline: #4CAF50 solid 1px;
+  transition: .1s ease;
+}
+
+/* Placeholder color */
+::placeholder {
+  color: #ddd;
+}
+.custom-class{
+  .modal-content{
+    background-color: #0d292a !important;
+    color: #fff !important;
+  }
+
+}
+
+.md-editor .md-footer, .md-editor>.md-header{
+  background-color: #111111 !important;
+  color: #fff;
+
+}
+
+.md-editor>textarea{
+  background-color: #111111 !important;
+}
+
+::ng-deep{
+
+  blockquote {
+    margin: 0 0 0 1rem;
+    width: 20rem;
+    background: #d1d1d1;
+    border-radius: 2px;
+    border-left: 4px solid #858181;
+    padding: 0 0 0 1rem;
+}
+  th{
+    border-width: 1px;
+    padding: 0.5rem;
+  }
+  td{
+    border-width: 1px;
+    padding: 0.5rem;
+  }
+}
+

@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { NotificationComponent } from './notification/notification.component';
 import { MenuToggleComponent } from './menu-toggle/menu-toggle.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToolkitComponent } from './toolkit/toolkit.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     FooterComponent,
     NotificationComponent,
-    MenuToggleComponent
+    MenuToggleComponent,
+    ToolkitComponent,
+    LoadingComponent
   ],
   imports: [
     FormsModule,
@@ -40,11 +44,14 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     FooterComponent,
     NotificationComponent,
-    MenuToggleComponent
+    MenuToggleComponent,
+    ToolkitComponent,
+    LoadingComponent
+
 
   ],
   providers:[
-    { provide: 'ttlDefault', useValue: 3000 }
+    { provide: 'ttlDefault', useValue: 9999999 }
   ]
 })
 export class SharedModule { }

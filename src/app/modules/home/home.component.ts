@@ -4,6 +4,9 @@ import { CardContent, MultCards } from 'src/app/models/cardContent';
 import { HomeService } from './home.service';
 import { Reviews } from '../../models/reviews';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImageLoaderService } from 'src/app/services/image.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +18,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('profile') profile!: ElementRef;
   @ViewChild('statement') statement!: ElementRef;
   @ViewChild('statementPosition') statementPosition!: ElementRef;
+  isLoading = true
 
 
 
@@ -23,14 +27,34 @@ export class HomeComponent implements OnInit {
   constructor(private renderer:Renderer2,
     private viewPortScroller:ViewportScroller,
     private homeService:HomeService,
-    private modalService:NgbModal) {
+    private modalService:NgbModal,
+    private imageService:ImageLoaderService,
+    private router:Router
 
+    ) {
+      this.loadingService()
     }
+
+  loadingService(){
+      this.imageService.waitForImagesToLoad().subscribe(()=>{
+        this.isLoading = false
+      })
+
+      let loadSubBreaking = this.imageService.timeBreakingImages(1000).subscribe(n => {
+      if(n === 1){
+        this.isLoading = false
+        loadSubBreaking.unsubscribe()
+      }
+    })
+
+
+  }
   ngOnInit(): void {
    this.getReviews()
-  }
 
-  msg = 'Eai meu amigo bora me dar esse manei ?'
+  }
+  //Falar com thomas sobre mensagem automática na tela inicial
+  msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.'
 
   modalContent = {
     title:'Area de atuação',

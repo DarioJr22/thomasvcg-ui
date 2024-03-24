@@ -4,6 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
+import { ImageLoaderService } from 'src/app/services/image.service';
 
 
 
@@ -16,6 +17,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     HomeRoutingModule,
     RouterModule
-  ]
+  ],
+  providers: [
+    ImageLoaderService
+  ],
 })
 export class HomeModule { }

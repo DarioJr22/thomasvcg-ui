@@ -1,0 +1,31 @@
+
+
+.rotating-image {
+  position: fixed;
+  top: calc(50% - 51px);
+  left: calc(50% - 41px);
+  animation: spin 2s linear infinite;
+  z-index: 2; /* Garante que a imagem fique na frente do fundo */
+
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #005e61;
+  opacity: 0.6;
+  z-index: 1; /* Garante que o fundo fique atrás da imagem */
+}
+
+
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}

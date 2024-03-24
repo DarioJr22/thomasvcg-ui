@@ -8,6 +8,10 @@ import { EditorInstance, EditorOption } from 'angular-markdown-editor';
 import { MarkdownService } from 'ngx-markdown';
 import '@github/markdown-toolbar-element'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from '../login/login.component';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'tcv-postagem',
   templateUrl: './postagem.component.html',
@@ -18,8 +22,14 @@ export class PostagemComponent implements OnInit {
   operation:string = Operation.LIST
 
   editTempTag = ''
+  conteudoDefault = ''
 
   Post:Post[] = []
+  FiteredPosts:Post[] = [];
+  searchFilter:any = {
+    title:'',
+    tag:''
+  }
   tags:string[]=[]
   tagHandler:any[] = []
   editorOptions!: EditorOption
@@ -31,16 +41,36 @@ export class PostagemComponent implements OnInit {
       subtitle:'',
       content:'',
       tags:[],
-      date:''
+      date:'',
+      user:null
     }
+  }
+  user:User = {
+    login:'',
+    password:'',
+    repeatPassword:'',
+    role:'USER',
+    email:'',
+    articleWriter:false
+  }
+
+  userTest = {
+    login:'teste',
+    password:'123',
+    role:'USER',
+    email:'teste@teste.com',
+    id:'24'
   }
 
 
-
-  constructor(private postService:PostService,
+  constructor(
+    private auth:AngularFireAuth,
+    private postService:PostService,
     private notify:NotificationService,
     private markdownService: MarkdownService,
-    private modalService:NgbModal){}
+    private modalService:NgbModal,
+    private userService:UsuarioService,
+    private cookie:CookieService){}
 
   ngOnInit(): void {
     this.getPost()
@@ -53,9 +83,74 @@ export class PostagemComponent implements OnInit {
       parser: (val) => this.parse(val)
 
     };
-    this.markdownText = '## mEU PAI ETERNO FUNCIONA PELO AMOR DE DEUS'
+    this.markdownText = this.conteudoDefault
   }
 
+  //Task - Validar o usuário antes de fazer o post
+  validateUser(post:Post,modalContent:any){
+    //Verifica se o usuário já logou
+
+
+    let logged = false
+    this.user.email = this.cookie.get('email')
+    this.user.password = this.cookie.get('senha')
+    console.log(this.user);
+
+      this.auth
+      .signInWithEmailAndPassword(this.user.email, this.user.password)
+      .then(()=>{
+        //Caso esteja, então segue pra criar o post
+        this.changeOp('CREATE',post)
+      })
+      .catch((error) => {
+        //se o bonito não tiver logado, então ele abre o modal
+        this.openModal(post,modalContent)
+      })
+    return logged
+    //Abre o modal para fazer o login do usuário
+
+  }
+
+  //Modal service
+  openModal(post:any,content:any){
+    this.modalService
+   .open(content,{  modalDialogClass: 'custom-class',scrollable:true })
+   .result
+   .then((result) => {
+   //Caso o cara tenha clicado para logar ele tenta fazer o login
+       if (result){
+           this.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
+           .then(()=>{
+             this.userService.setCurrentUser(this.user)
+             this.cookie.set('email',this.user.email)
+             this.cookie.set('senha',this.user.password)
+             this.changeOp('CREATE',post)
+           })
+           .catch((error) => {
+             this.notify.notify({
+               message: `Erro ao fazer o login :${error.message}`,
+               type: NotificationType.ERROR
+             })
+           })
+          }
+        }
+      )
+
+  }
+
+
+  //Task - Filtrar o post pelo titulo
+  aplicarFiltro(){
+    console.log(this.searchFilter);
+
+    this.FiteredPosts = this.Post.filter((x)=>
+    x.postDTO.title.toLowerCase().includes(this.searchFilter.title.toLowerCase())
+    )
+  }
+
+  loginByCookie(){
+
+  }
   parse(inputValue: string) {
     const markedOutput = this.markdownService.parse(inputValue.trim());
     this.highlight();
@@ -75,17 +170,12 @@ export class PostagemComponent implements OnInit {
             let dados:any
             dados = data
             dados.forEach((i:any) => {this.Post.push(i)});
+            this.FiteredPosts = this.Post
         },
         error:(error)=>{
           this.notify.notify({
             message: 'Erro ao buscar artigos no firebase!',
             type: NotificationType.ERROR
-          })
-        },
-        complete:()=>{
-          this.notify.notify({
-            message: 'Buscado com sucesso!',
-            type: NotificationType.SUCSESS
           })
         }
     })
@@ -116,7 +206,8 @@ export class PostagemComponent implements OnInit {
         subtitle:'',
         content:'',
         tags:[],
-        date:''
+        date:'',
+        user:null
       }
     }
   }
@@ -135,21 +226,31 @@ export class PostagemComponent implements OnInit {
           subtitle:'',
           content:'',
           tags:[],
-          date:''
+          date:'',
+          user:null
         }
       }
     }
   }
 
-  addtag(tag:string){
-    console.log(tag);
+  share(){
+   navigator.share({
+    title: this.PostReading.postDTO.title,
+    text: 'Confira o artigo pesquisando pelo titulo na página da url.' ,
+    url: window.location.href,
 
-    this.PostReading.postDTO.tags.push(tag)
+   })
+   .then(() => console.log('Conteúdo compartilhado com sucesso.'))
+   .catch((error) => console.error('Erro ao compartilhar:', error));
   }
 
-/*   removeTag(tag:string){
-    this.tags.splice(...this.tags.filter((i)=>i.tag == tag), 1);
-  } */
+  addtag(tag:string){
+  this.PostReading.postDTO.tags.includes(tag) ? '' : this.PostReading.postDTO.tags.push(tag)
+  }
+
+  removeTag(tag:string){
+    this.PostReading.postDTO.tags.splice(this.PostReading.postDTO.tags.indexOf(tag), 1);
+  }
 
   tagHandlerUpdate(){
     this.tags.map( i =>
@@ -230,17 +331,45 @@ export class PostagemComponent implements OnInit {
   }
 
   createPost(){
-    this.postService.postArticle(this.PostReading).subscribe({
-      next:()=>{
-        this.notify.notify({
-          message: `Artigo criado com sucesso`,
-          type: NotificationType.SUCSESS
-        })
-      },complete:()=>{
-        this.getPost()
-        this.changeOp('LIST',this.PostReading)
-      }
-    })
+
+    this.PostReading.postDTO.content = this.markdownText
+    this.PostReading.postDTO.user = this.userTest
+
+    if(
+    this.PostReading.postDTO.content != '' ||
+    this.PostReading.postDTO.title != '' ||
+    this.PostReading.postDTO.subtitle != '' ){
+      this.postService.postArticle(this.PostReading.postDTO).subscribe({
+        next:()=>{
+          this.notify.notify({
+            message: `Artigo criado com sucesso`,
+            type: NotificationType.SUCSESS
+          })
+          this.PostReading.postDTO.content = ''
+          this.PostReading.postDTO.tags = []
+          this.PostReading.postDTO.date = ''
+          this.PostReading.postDTO.title = ''
+          this.PostReading.postDTO.subtitle = ''
+          this.markdownText = this.conteudoDefault
+        },
+        error:(error)=>{
+          this.notify.notify({
+            message: `Erro:${error.message}`,
+            type: NotificationType.ERROR
+          })
+        }
+        ,complete:()=>{
+          this.getPost()
+          this.changeOp('LIST',this.PostReading)
+        }
+      })
+    }else{
+      this.notify.notify({
+        message: `Campos: Titulo, Subtitulo e o conteúdo do post são obrigatórios.`,
+        type: NotificationType.ERROR
+      })
+    }
+
   }
 
 

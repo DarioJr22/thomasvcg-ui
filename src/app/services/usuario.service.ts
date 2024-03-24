@@ -25,6 +25,10 @@ export class UsuarioService {
     this.currentUser.next(user)
   };
 
+  getCurrentUser(){
+    return this.currentUser.value
+  }
+
   //User - Register
   registerUser(user:any){
     return this.http.post(`${API.DEV}/user`,user,this.httpOptions);

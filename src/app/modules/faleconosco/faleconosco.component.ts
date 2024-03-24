@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactDTO, CostumerDTO, RelationShip } from 'src/app/models/faleConosco';
 import { FaleConoscoService } from './faleconosco.service';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
+import { NotificationType } from 'src/app/models/notification';
 
 @Component({
   selector: 'app-faleconosco',
@@ -53,7 +55,8 @@ UF:string[] = []
 
 
 constructor(
-  private contatoService:FaleConoscoService
+  private contatoService:FaleConoscoService,
+  private notify:NotificationService,
 ) {
 
 }
@@ -107,7 +110,23 @@ this.costumerModel.address.invalidCep = false
 }
 
 sendContact(){
-  this.postCostumer()
+  if(
+    this.costumerModel.costumerName != ''  &&
+    this.costumerModel.email != '' &&
+    this.costumerModel.contact != '' &&
+    this.costumerModel.address.cep != '' &&
+    !this.costumerModel.address.invalidCep){
+      console.log(this.costumerModel);
+
+      this.postCostumer()
+    }else{
+      this.notify.notify({
+        message: `Campos obrigatórios não preenchidos.\n
+        Campos: Nome\n,E-mail\n,Contato\n,CEP (Válido).`,
+        type: NotificationType.ERROR
+      })
+    }
+
 
 }
 
@@ -134,10 +153,16 @@ postContact(contactModel:ContactDTO,costumer:CostumerDTO){
   contactModel.arq_content = this.costumerModel.descricao
   this.contatoService.postContact(contactModel).subscribe({
     next:(data:any)=>{
-      console.log('contato criado',data)
+      this.notify.notify({
+        message: `Caso enviado a nossa equipe, em breve entraremos em contato.`,
+        type: NotificationType.SUCSESS
+      })
     },
     error:(error)=>{
-      console.error(error)
+      this.notify.notify({
+        message: `Algo deu errado, tente mais tarde.`,
+        type: NotificationType.ERROR
+      })
     }
   })
 }

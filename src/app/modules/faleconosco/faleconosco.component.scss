@@ -1,0 +1,42 @@
+input,select,textarea {
+  background-color: #111111;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  appearance: none;
+}
+input:focus-visible {
+  outline: #4CAF50 solid 1px;
+  transition: .1s ease;
+}
+
+select:focus-visible {
+  outline: #4CAF50 solid 1px;
+  transition: .1s ease;
+}
+
+.form-select:focus {
+  border-color:none;
+  box-shadow: none;
+}
+
+textarea:focus-visible {
+  outline: #4CAF50 solid 1px;
+  transition: .1s ease;
+}
+
+/* Placeholder color */
+::placeholder {
+  color: #ddd;
+}
+
+.talkWithUs{
+  cursor: pointer;
+  *{
+    text-decoration: none;
+  }
+}

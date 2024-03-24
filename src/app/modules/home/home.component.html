@@ -26,8 +26,8 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 
 
  - [x] Depoimentos
-    - [ ] Integração com o backend
-    - [ ] Mock de depoimentos
+    - [x] Integração com o backend
+    - [x] Mock de depoimentos
     - [x] Recolher depoimentos com thoma
 - [ ] Chamada para a ação
     - [x] pesquisar
@@ -82,8 +82,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
     </div>
     <span class="imgThomas1">
       <span class="fade"> </span>
-      <img src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
-
+      <img  src="../../../assets/imgs/visualComponents/ftSemBg1.png" alt="imgThomas1">
     </span>
 
   </div>
@@ -146,14 +145,18 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
     Tem alguma duvida ?
   </span>
   <span class="callToActionButtons">
-    <button class="talkWithUs">
-      <span><img src="../../../assets/imgs/icons/ChatIcon.svg" alt="Chat"></span>
+    <button class="talkWithUs" [routerLink]="['/faleconosco']">
+      <span><img  src="../../../assets/imgs/icons/ChatIcon.svg" alt="Chat"></span>
       <p>Contate-nos</p>
     </button>
-    <button class="whatsapp">
+    <a
+    target="_blank"
+    [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg"
+    [type]="'APRESENTACAO'"
+    class="whatsapp">
       <span><img src="../../../assets/imgs/icons/whatsapp-svgrepo-com.svg" alt="Whatsapp"></span>
       <p>Whatsapp</p>
-    </button>
+    </a>
   </span>
 </section>
 <tcv-footer></tcv-footer>
@@ -182,4 +185,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
         </a>
   </div>
 </ng-template>
+<!-- <tcv-toolkit></tcv-toolkit> -->
+<tcv-loading [loading]="isLoading"></tcv-loading>
 </div>
+

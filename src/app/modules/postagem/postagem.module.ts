@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularMarkdownEditorModule, EditorOption } from 'angular-markdown-editor';
 import { MarkdownModule,  MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import '@github/markdown-toolbar-element'
+import { CookieService } from 'ngx-cookie-service';
 
 
  export const config: EditorOption = {
@@ -50,7 +51,7 @@ import '@github/markdown-toolbar-element'
     CUSTOM_ELEMENTS_SCHEMA
   ],
   providers:[
-
+    CookieService
   ]
 })
 export class PostagemModule { }

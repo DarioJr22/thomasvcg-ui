@@ -1,6 +1,17 @@
 <ng-container *ngFor="let n of notifications">
   <div #notification [attr.class]="n.type">
-    {{n.message}}
-    <a style="cursor: pointer;" (click)="close(n.id,notification)">close</a>
+    <mat-icon style=" color: #fff;" *ngIf="n.type == 'success'" class="mat-18">check_circle</mat-icon>
+    <mat-icon  style=" color: #fff;" class="mat-18">error</mat-icon>
+    <p style="
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      width: 10rem;
+      overflow-y: auto;
+      flex-grow: 2;">{{n.message}}</p>
+
+    <mat-icon style="
+    cursor: pointer;
+    color: #fff;" (click)="close(n.id,notification)">close</mat-icon>
   </div>
 </ng-container>

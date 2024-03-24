@@ -7,6 +7,7 @@ export interface Post{
     content:string;
     tags:string[];
     date:string;
+    user:any;
   }
 }
 

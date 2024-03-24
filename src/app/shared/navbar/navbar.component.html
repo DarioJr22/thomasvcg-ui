@@ -15,21 +15,21 @@
     </div>
     <div class="socialMediaButton">
         <div class="socialMedia">
-          <span class="iconWrapper">
+          <a target="_blank" [href]="" class="iconWrapper">
             <img src="../../../assets/imgs/icons/facebook.svg" alt="Email:">
-          </span>
+          </a>
 
-          <span class="iconWrapper">
-            <img src="../../../assets/imgs/icons/twitter.svg" alt="Email:">
-          </span>
+          <a target="_blank" [href]="" class="iconWrapper">
+            <img height="24px" width="24px" src="../../../assets/imgs/icons/twitter.svg" alt="Email:">
+          </a>
 
-          <span class="iconWrapper">
+          <a target="_blank" [href]=""  class="iconWrapper">
             <img src="../../../assets/imgs/icons/linkedin.svg" alt="Email:">
-          </span>
+          </a>
 
-          <span class="iconWrapper">
+          <a target="_blank" [href]="" class="iconWrapper">
             <img src="../../../assets/imgs/icons/instagram.svg" alt="Email:">
-          </span>
+          </a>
         </div>
 
         <div class="embaixadoresButton">
@@ -40,20 +40,25 @@
      </div>
   </div>
 
-  <div class="faixaInferior">
+  <div class="menu faixaInferior">
+
+    <div class="d-flex align-items-center justify-content-between w-100" >
+      <div [routerLink]="['/']" class="logo">
+        <img src="../../../assets/imgs/Logo_cropped.png" [height]="logo.height" [width]="logo.width" alt="logo">
+      </div>
 
 
-    <div [routerLink]="['/']" class="logo">
-      <img src="../../../assets/imgs/Logo_cropped.png" [height]="logo.height" [width]="logo.width" alt="logo">
+      <span>
+        <mat-icon ngbTooltip="Menu" (click)="toggleMenu()" class="menu-icon">menu</mat-icon>
+      </span>
     </div>
 
-    <span >
-      <tcv-menu-toggle></tcv-menu-toggle>
-    </span>
+
+
 
 
       <ul class="menuOpt">
-        <li [routerLink]="[i.link]" *ngFor="let i of menu">
+        <li style="white-space: nowrap;" [routerLink]="[i.link]" *ngFor="let i of menu">
           {{i.nome}}
         </li>
       </ul>

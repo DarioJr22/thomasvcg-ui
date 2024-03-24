@@ -3,6 +3,8 @@ import { KeenSliderInstance } from 'keen-slider';
 import { MultCards } from 'src/app/models/cardContent';
 import KeenSlider from 'keen-slider';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, take } from 'rxjs'
 
 @Component({
   selector: 'app-sobrenos',
@@ -28,10 +30,20 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
   ]
 })
 export class SobrenosComponent implements AfterViewInit{
+  msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.'
+
+
+
+  constructor(
+    private router:Router) {
+
+
+     }
   number:number = 0
   @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
   slider!: KeenSliderInstance
   ngAfterViewInit() {
+
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
       loop: true,
       mode: "free-snap",
