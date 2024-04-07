@@ -37,8 +37,6 @@ export class ToolkitComponent implements OnInit,AfterViewInit {
 
     let menu = document.querySelector(".menu")
     let toggle = document.querySelector(".toggle")
-    console.log(this.menu);
-    console.log(this.toggle);
     toggle!.addEventListener("click",()=>{
       menu!.classList.toggle("active");
     })

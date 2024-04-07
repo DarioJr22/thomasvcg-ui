@@ -25,7 +25,7 @@ export class HomeService{
 //https://mybusiness.googleapis.com/v4/accounts/thomasvcg-5e3ce/locations/ChIJLaOg3Tc9qwcRTemoMuGJ6Rc/reviews
 // Para conseguir todas as reviews vice tem que se autenticar nessa apo aí acima.
   getReviews(){
-   return this.http.get(`${API.DEV}/user/reviews`,this.httpOptions)
+   return this.http.get(`${API.PROD}/user/reviews`,this.httpOptions)
   }
 
 }

@@ -3,6 +3,7 @@ import { ContactDTO, CostumerDTO, RelationShip } from 'src/app/models/faleConosc
 import { FaleConoscoService } from './faleconosco.service';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
 import { NotificationType } from 'src/app/models/notification';
+import { ImageLoaderService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-faleconosco',
@@ -11,11 +12,11 @@ import { NotificationType } from 'src/app/models/notification';
 })
 export class FaleConoscoComponent implements OnInit {
  //
-
+ isLoading = false
   msgZap = '';
 
  contactModel:ContactDTO = {
-   contact_content:'',
+  contactContent:'',
    arq_content:'',
    costumer: undefined
  }
@@ -57,6 +58,7 @@ UF:string[] = []
 constructor(
   private contatoService:FaleConoscoService,
   private notify:NotificationService,
+  private imageService:ImageLoaderService
 ) {
 
 }
@@ -66,6 +68,19 @@ constructor(
     Contato feito pelo site !
     `
   }
+
+  loadingService(){
+    this.imageService.waitForImagesToLoad().subscribe(()=>{
+      this.isLoading = false
+    })
+
+    let loadSubBreaking = this.imageService.timeBreakingImages(300).subscribe(n => {
+    if(n === 1){
+      this.isLoading = false
+      loadSubBreaking.unsubscribe()
+    }
+  })
+}
 
 
   getUF(){
@@ -116,7 +131,6 @@ sendContact(){
     this.costumerModel.contact != '' &&
     this.costumerModel.address.cep != '' &&
     !this.costumerModel.address.invalidCep){
-      console.log(this.costumerModel);
 
       this.postCostumer()
     }else{
@@ -132,16 +146,21 @@ sendContact(){
 
 
 postCostumer(){
+  this.isLoading = true
   this.contatoService.postCostumer(this.costumerModel).subscribe(
     {
       next:(data:any)=>{
-        console.log('Cliente criado',data);
 
         this.postContact(this.contactModel, data.costumer)
       },
       error:(error)=>{
+        this.notify.notify({
+          message: `Erro ao cadastrar cliente \n ${error.message}`,
+          type: NotificationType.ERROR
+        })
+        this.isLoading = false
+      },
 
-      }
     }
   )
 }
@@ -149,7 +168,7 @@ postCostumer(){
 
 postContact(contactModel:ContactDTO,costumer:CostumerDTO){
   contactModel.costumer = costumer
-  contactModel.contact_content = this.costumerModel.descricao
+  contactModel.contactContent = this.costumerModel.descricao
   contactModel.arq_content = this.costumerModel.descricao
   this.contatoService.postContact(contactModel).subscribe({
     next:(data:any)=>{
@@ -160,9 +179,13 @@ postContact(contactModel:ContactDTO,costumer:CostumerDTO){
     },
     error:(error)=>{
       this.notify.notify({
-        message: `Algo deu errado, tente mais tarde.`,
+        message: `Erro ao cadastrar contato \n ${error.message}`,
         type: NotificationType.ERROR
       })
+      this.isLoading = false
+    },
+    complete:()=>{
+      this.isLoading = false
     }
   })
 }

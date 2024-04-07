@@ -476,14 +476,13 @@
   div.mainWrapperaboutUs{
     display: grid;
     grid-template-columns: 100%;
-    row-gap: 1.5rem;
     max-width: 100vw;
 
     section.aboutUsDescicao{
       display: flex;
       flex-flow: column;
       row-gap: 1rem;
-      margin: 0 5%;
+      margin: 1rem 5%;
       background-color: #1C1C1C;
       padding: 1.5rem;
       border-radius: 16px;
@@ -541,8 +540,8 @@
 
       img.inHonorImg{
         border-radius: 16px;
-        height: 35rem;
-        width: 35rem;
+        height: 22rem;
+        width: 92%;
         justify-self: center;
       }
     }
@@ -664,6 +663,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
+            margin: 0;
+            padding: 5px;
           }
         }
 
@@ -1041,6 +1042,7 @@
 
             .form-group{
               padding: 2rem;
+              width: 100%;
               label{
                 color:#fff;
                 font-weight: 600;
@@ -1076,8 +1078,11 @@
 
           .callToActionButtons{
             display: flex;
-            column-gap: 1.5rem;
+            flex-direction: column;
+            row-gap: 1.5rem;
+            align-items: center;
             .talkWithUs{
+              text-decoration: none;
               text-transform: uppercase;
               letter-spacing: 1.3px;
               color: #fff;
@@ -1109,6 +1114,7 @@
               }
             }
             .whatsapp{
+              text-decoration: none;
               text-transform: uppercase;
               letter-spacing: 1.3px;
               color: #fff;

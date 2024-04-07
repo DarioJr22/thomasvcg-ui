@@ -12,6 +12,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../login/login.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ImageLoaderService } from 'src/app/services/image.service';
 @Component({
   selector: 'tcv-postagem',
   templateUrl: './postagem.component.html',
@@ -20,7 +21,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class PostagemComponent implements OnInit {
   bsEditorInstance!: EditorInstance;
   operation:string = Operation.LIST
-
+  isLoading = true
   editTempTag = ''
   conteudoDefault = ''
 
@@ -55,11 +56,11 @@ export class PostagemComponent implements OnInit {
   }
 
   userTest = {
-    login:'teste',
-    password:'123',
+    login:'contato@thomas.com',
+    password:'karla23123',
     role:'USER',
-    email:'teste@teste.com',
-    id:'24'
+    email:'contato@thomas.com',
+    id:'1'
   }
 
 
@@ -70,8 +71,21 @@ export class PostagemComponent implements OnInit {
     private markdownService: MarkdownService,
     private modalService:NgbModal,
     private userService:UsuarioService,
-    private cookie:CookieService){}
+    private imageService:ImageLoaderService,
+    private cookie:CookieService){
+      this.loadingService()
+    }
+    loadingService(){
+      this.imageService.waitForImagesToLoad().subscribe(()=>{
+        this.isLoading = false
+      })
 
+      let loadSubBreaking = this.imageService.timeBreakingImages(1000).subscribe(n => {
+      if(n === 1){
+        this.isLoading = false
+        loadSubBreaking.unsubscribe()
+      }
+    })}
   ngOnInit(): void {
     this.getPost()
     this.getTags()
@@ -94,7 +108,6 @@ export class PostagemComponent implements OnInit {
     let logged = false
     this.user.email = this.cookie.get('email')
     this.user.password = this.cookie.get('senha')
-    console.log(this.user);
 
       this.auth
       .signInWithEmailAndPassword(this.user.email, this.user.password)
@@ -141,7 +154,6 @@ export class PostagemComponent implements OnInit {
 
   //Task - Filtrar o post pelo titulo
   aplicarFiltro(){
-    console.log(this.searchFilter);
 
     this.FiteredPosts = this.Post.filter((x)=>
     x.postDTO.title.toLowerCase().includes(this.searchFilter.title.toLowerCase())
@@ -165,9 +177,11 @@ export class PostagemComponent implements OnInit {
   }
 
   getPost(){
+    this.isLoading = true
     this.postService.getArticle().subscribe({
         next:(data)=>{
             let dados:any
+            this.Post = []
             dados = data
             dados.forEach((i:any) => {this.Post.push(i)});
             this.FiteredPosts = this.Post
@@ -177,7 +191,8 @@ export class PostagemComponent implements OnInit {
             message: 'Erro ao buscar artigos no firebase!',
             type: NotificationType.ERROR
           })
-        }
+          this.isLoading = false
+        },complete:()=>{this.isLoading = false}
     })
   }
 
@@ -234,7 +249,7 @@ export class PostagemComponent implements OnInit {
   }
 
   share(){
-   navigator.share({
+    window.navigator.share({
     title: this.PostReading.postDTO.title,
     text: 'Confira o artigo pesquisando pelo titulo na página da url.' ,
     url: window.location.href,
@@ -339,6 +354,7 @@ export class PostagemComponent implements OnInit {
     this.PostReading.postDTO.content != '' ||
     this.PostReading.postDTO.title != '' ||
     this.PostReading.postDTO.subtitle != '' ){
+      this.isLoading = true
       this.postService.postArticle(this.PostReading.postDTO).subscribe({
         next:()=>{
           this.notify.notify({
@@ -357,8 +373,10 @@ export class PostagemComponent implements OnInit {
             message: `Erro:${error.message}`,
             type: NotificationType.ERROR
           })
+          this.isLoading = false
         }
         ,complete:()=>{
+          this.isLoading = false
           this.getPost()
           this.changeOp('LIST',this.PostReading)
         }

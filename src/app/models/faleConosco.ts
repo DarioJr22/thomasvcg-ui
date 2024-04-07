@@ -15,7 +15,7 @@ export interface CostumerDTO{
   User:User
 }
 export interface ContactDTO{
-   contact_content:string,
+   contactContent:string,
   arq_content:string,
   costumer?:CostumerDTO
 }

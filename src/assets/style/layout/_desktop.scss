@@ -4,21 +4,21 @@
 /* Todas as páginas Independente de  */
 div.mainWrapperHome{
   width: 100vw;
-  height: auto;
+  height: 100%;
   background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
   background-size: cover;
 }
 
 div.mainWrapperaboutUs{
   width: 100vw;
-  height: auto;
+  height: 100%;
   background: url(../../../assets/imgs/backgrounds/BG_SobreNos_.png) no-repeat center center;
   background-size: cover;
 }
 
 div.mainWrapperPostagem{
   width: 100vw;
-  height: auto;
+  height: 100%;
   background: url(../../../assets/imgs/backgrounds/BG_Postagens_.png) no-repeat center center;
   background-size: cover;
 
@@ -26,7 +26,7 @@ div.mainWrapperPostagem{
 
 div.mainWrapperFaleConosco{
   width: 100vw;
-  height: auto;
+  height: 100%;
   background: url(../../../assets/imgs/backgrounds/BG_FaleConosco_.png) no-repeat center center;
   background-size: cover;
 
@@ -34,7 +34,7 @@ div.mainWrapperFaleConosco{
 
 div.mainWrapperLogin{
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: url(../../../assets/imgs/backgrounds/BG_FaleConosco_.png) no-repeat center center;
   background-size: cover;
   display: flex;
@@ -588,14 +588,15 @@ h2,h3,h4,h5,h6{
   div.mainWrapperaboutUs{
     display: grid;
     grid-template-columns: 100%;
-    row-gap: 1.5rem;
     max-width: 100vw;
+    height: 100%;
 
     section.aboutUsDescicao{
+
       display: flex;
       flex-flow: column;
       row-gap: 1rem;
-      margin: 0 5%;
+      margin: 1rem 5%;
       background-color: #1C1C1C;
       padding: 1.5rem;
       border-radius: 16px;
@@ -773,6 +774,8 @@ h2,h3,h4,h5,h6{
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
+            margin: 0;
+            padding: 5px;
           }
         }
 

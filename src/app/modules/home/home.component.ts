@@ -36,9 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
   loadingService(){
-      this.imageService.waitForImagesToLoad().subscribe(()=>{
-        this.isLoading = false
-      })
+
 
       let loadSubBreaking = this.imageService.timeBreakingImages(1000).subscribe(n => {
       if(n === 1){
@@ -46,16 +44,35 @@ export class HomeComponent implements OnInit {
         loadSubBreaking.unsubscribe()
       }
     })
-
-
   }
   ngOnInit(): void {
    this.getReviews()
 
   }
   //Falar com thomas sobre mensagem automática na tela inicial
-  msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.'
-
+  msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.\n'
+  frasesInicio = [
+    "Direito Constitucional",
+    "Direito Civil",
+    "Direito Penal",
+    "Direito do Trabalho",
+    "Direito Tributário",
+    "Direito Administrativo",
+    "Direito Ambiental",
+    "Direito Internacional",
+    "Direitos Humanos",
+    "Jurisprudência",
+    "Legislação",
+    "Advocacia",
+    "Processo Civil",
+    "Processo Penal",
+    "Responsabilidade Civil",
+    "Contratos",
+    "Família e Sucessões",
+    "Propriedade Intelectual",
+    "Direito Digital",
+    "Direito Empresarial"
+  ]
   modalContent = {
     title:'Area de atuação',
     content:'',
@@ -128,7 +145,6 @@ export class HomeComponent implements OnInit {
       {
         next:(data:any)=>{
           this.reviewsConverter(JSON.parse(data.body))
-          console.log(this.reviews);
 
 
 
@@ -160,7 +176,6 @@ export class HomeComponent implements OnInit {
   }
 
   selectCard(template:any,dados:CardContent){
-    console.log(dados);
 
     this.modalContent.title = dados.main
     this.modalContent.content = dados.footer

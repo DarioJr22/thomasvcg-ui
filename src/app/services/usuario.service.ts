@@ -31,7 +31,7 @@ export class UsuarioService {
 
   //User - Register
   registerUser(user:any){
-    return this.http.post(`${API.DEV}/user`,user,this.httpOptions);
+    return this.http.post(`${API.PROD}/user`,user,this.httpOptions);
   };
 
 

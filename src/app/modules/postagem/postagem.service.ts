@@ -27,34 +27,34 @@ export class PostService {
 
   //User - Register
   postArticle(user:any){
-    return this.http.post(`${API.DEV}/post`,user,this.httpOptions);
+    return this.http.post(`${API.PROD}/post`,user,this.httpOptions);
   };
 
   getArticle(){
-    return this.http.get(`${API.DEV}/post`,this.httpOptions);
+    return this.http.get(`${API.PROD}/post`,this.httpOptions);
   };
 
   getTags(){
-    return this.http.get(`${API.DEV}/post/tags`,this.httpOptions)
+    return this.http.get(`${API.PROD}/post/tags`,this.httpOptions)
   }
 
   putArticle(user:any){
-    return this.http.put(`${API.DEV}/post`,user,this.httpOptions);
+    return this.http.put(`${API.PROD}/post`,user,this.httpOptions);
   }
 
   postTags(tag:string){
-    return this.http.post(`${API.DEV}/post/tags/${tag}`,{},this.httpOptions)
+    return this.http.post(`${API.PROD}/post/tags/${tag}`,{},this.httpOptions)
   }
 
   putTags(newTag:string,oldTag:string){
-    return this.http.put(`${API.DEV}/post/tags`,{
+    return this.http.put(`${API.PROD}/post/tags`,{
       newTag:newTag,
       oldTag:oldTag
     },this.httpOptions)
   }
 
   deleteTags(tag:string){
-    return this.http.delete(`${API.DEV}/post/tags/${tag}`,this.httpOptions)
+    return this.http.delete(`${API.PROD}/post/tags/${tag}`,this.httpOptions)
     .pipe(
       catchError(error => {
         console.error('Erro ao processar a resposta:', error);

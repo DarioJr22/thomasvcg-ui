@@ -13,7 +13,7 @@ export enum Env{
 
 export enum API{
   DEV = 'http://localhost:8080',
-  PROD = 'http://localhost:80810'
+  PROD = 'http://thom-api-env.us-east-1.elasticbeanstalk.com'
 }
 
 export class Config {

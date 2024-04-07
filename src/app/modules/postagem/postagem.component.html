@@ -218,10 +218,11 @@ class="postCreateWapper">
       <input type="password" required [(ngModel)]="user.password" name="password"  placeholder="Senha">
     </div>
 	</div>
-  <div style="background-color:#222; color: white" class="modal-footer">
+  <div style="background-color:#222; color: white;justify-content: center;" class="modal-footer">
     <button type="button" class="primaryButton" (click)="modal.close(true)">Login</button>
     <button type="button" class="primaryButton" (click)="modal.close(false)">Fechar</button>
 	</div>
 </ng-template>
 <tcv-footer></tcv-footer>
+<tcv-loading [loading]="isLoading"></tcv-loading>
 </div>

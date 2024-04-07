@@ -51,7 +51,7 @@ import { LoadingComponent } from './loading/loading.component';
 
   ],
   providers:[
-    { provide: 'ttlDefault', useValue: 9999999 }
+    { provide: 'ttlDefault', useValue: 5000 }
   ]
 })
 export class SharedModule { }

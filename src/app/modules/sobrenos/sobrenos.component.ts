@@ -5,6 +5,7 @@ import KeenSlider from 'keen-slider';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, take } from 'rxjs'
+import { ImageLoaderService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-sobrenos',
@@ -32,16 +33,28 @@ import { filter, take } from 'rxjs'
 export class SobrenosComponent implements AfterViewInit{
   msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.'
 
-
+  isLoading = true
 
   constructor(
-    private router:Router) {
+    private router:Router,
+    private imageService:ImageLoaderService,) {
 
-
+      this.loadingService()
      }
   number:number = 0
   @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
   slider!: KeenSliderInstance
+  loadingService(){
+    this.imageService.waitForImagesToLoad().subscribe(()=>{
+      this.isLoading = false
+    })
+
+    let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
+    if(n === 1){
+      this.isLoading = false
+      loadSubBreaking.unsubscribe()
+    }
+  })}
   ngAfterViewInit() {
 
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {

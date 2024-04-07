@@ -47,15 +47,13 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
 <section class="apresentacao1">
   <div class="descricaoWrapper">
     <div class="descricao">
-      <h1 class="titulo">Resolva sua:
+      <h1 class="titulo">Soluções para:
 
         <span class="wrapper">
 
           <ul class="dynamic-txts">
-            <li><span class="destaque">Pendência jurídica </span></li>
-            <li><span class="destaque">Pendência previdenciária</span></li>
-            <li><span class="destaque">Reconciliação familiar</span></li>
-            <li><span class="destaque">Alguma coisa juridica</span></li>
+            <li *ngFor="let item of frasesInicio"><span class="destaque">{{item}}</span></li>
+            <li><span class="destaque">Direito Previdenciário</span></li>
           </ul>
         </span></h1>
 
@@ -178,7 +176,7 @@ REFINAR ESTILIZAÇÃO DA PÁGINA
   justify-content: center;" class="modal-footer">
     <a
         target="_blank"
-        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg"
+        [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg+' Tema: '+this.modalContent.title +'.'"
         class="apresentacaoButton1"
         [type]="'APRESENTACAO'">
           Falar com especialista
