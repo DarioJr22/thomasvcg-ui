@@ -14,10 +14,12 @@ import { UsuarioService } from './services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginModule } from './modules/login/login.module';
+import { SharethisAngularModule } from 'sharethis-angular';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,7 +30,8 @@ import { LoginModule } from './modules/login/login.module';
     AngularFireModule.initializeApp(enviroment.firebase),
     provideAuth(() => getAuth()),
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    SharethisAngularModule
 
 
   ],

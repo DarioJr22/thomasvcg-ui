@@ -27,7 +27,7 @@
   <section class="aboutUsCasting">
     <header class="aboutUsTitulo">
       <!-- Aqui titulo do elenco -->
-      <h1>Elenco</h1>
+      <h1>Parceiros</h1>
     </header>
     <div class="slideWrapper">
       <div class="keen-slider" #sliderRef>
@@ -35,6 +35,15 @@
           *ngFor="let i of dadosAreaAtuacao.content; index as y"
           [class]="'keen-slider__slide cardElenco'">
           <span class="iconElencoWrapper">
+            <mat-icon
+            (click)="openModal(content,i)"
+            style="
+              color: white;
+              display: absolute;
+              position: absolute;
+              top: 30px;
+              left: 30px;"
+              ngbTooltip="Mais informações">info</mat-icon>
             <img
             class="iconElenco"
             width="361px"
@@ -73,4 +82,46 @@
 
   <tcv-footer></tcv-footer>
   <tcv-loading [loading]="isLoading"></tcv-loading>
+  <ng-template #content class="customModal" let-modal>
+    <div style="background-color:#0d292a; color: white" class="modal-header d-flex align-items-center">
+      <span class="mr-1"></span>
+      <h4 class="modal-title" id="modal-basic-title">{{this.modalContent.main}}</h4>
+      <mat-icon style="color: #fff; cursor: pointer;" aria-label="Close" (click)="modal.dismiss(false)" class="mat-18">close</mat-icon>
+
+    </div>
+    <div style="
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0d292a;
+    color: white;
+    height: auto;" class="modal-body">
+     <!--  <img
+      width="361px"
+      height="580px"
+      [src]="this.modalContent.header"> -->
+      <p>
+        {{this.modalContent.info}}
+      </p>
+    </div>
+
+    <div style="background-color: #0d292a;
+    color: white;
+    display: flex;
+    width: 100%;
+    justify-content: center;"
+    class="modal-footer">
+    <div class="callToActionButtons">
+      <a
+      target="_blank"
+
+      [href]="'https://api.whatsapp.com/send?phone=5508173003237&text='+ msg+'.'"
+      class="talkWithUs"
+      [type]="'APRESENTACAO'">
+        Contate-nos
+      </a>
+    </div>
+
+    </div>
+  </ng-template>
 </div>

@@ -27,7 +27,7 @@ export class FaleConoscoService{
   }
 
   postContact(contact:ContactDTO){
-   return this.http.post(`${API.PROD}/dcontact/costumer/${contact.costumer?.id}`,contact,this.httpOptions)
+   return this.http.post(`${API.PROD}/contact/costumer/${contact.costumer?.id}`,contact,this.httpOptions)
   }
 
   postCostumer(costumer:CostumerDTO){

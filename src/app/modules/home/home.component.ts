@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   loadingService(){
 
 
-      let loadSubBreaking = this.imageService.timeBreakingImages(1000).subscribe(n => {
+      let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
       if(n === 1){
         this.isLoading = false
         loadSubBreaking.unsubscribe()
@@ -52,26 +52,14 @@ export class HomeComponent implements OnInit {
   //Falar com thomas sobre mensagem automática na tela inicial
   msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.\n'
   frasesInicio = [
-    "Direito Constitucional",
-    "Direito Civil",
-    "Direito Penal",
-    "Direito do Trabalho",
-    "Direito Tributário",
-    "Direito Administrativo",
-    "Direito Ambiental",
-    "Direito Internacional",
-    "Direitos Humanos",
-    "Jurisprudência",
-    "Legislação",
-    "Advocacia",
-    "Processo Civil",
-    "Processo Penal",
-    "Responsabilidade Civil",
-    "Contratos",
-    "Família e Sucessões",
-    "Propriedade Intelectual",
-    "Direito Digital",
-    "Direito Empresarial"
+    "Prisões em flangrante",
+    "Divórcios",
+    "Aposentadorias",
+    "Pensão por morte",
+    "Pensão alimentícia",
+    "Acusação de tráfico",
+    "Acusação de Maria da Penha",
+    "BPC LOAS"
   ]
   modalContent = {
     title:'Area de atuação',

@@ -36,7 +36,7 @@
             <input required name="contato" mask="(00) 00000-0000"  placeholder="(00) 00000-0000" type="text" [(ngModel)]="costumerModel.contact">
           </span>
 
-          <span>
+         <!--  <span>
             <label for="birthday">Data de aniversário</label>
             <input type="date" name="birthday"  [(ngModel)]="costumerModel.birtday" id="">
           </span>
@@ -50,17 +50,17 @@
               <option>DIVORCIADO</option>
               <option>VIUVO</option>
             </select>
-          </span>
+          </span> -->
          <!--  <span class="input-rg">
             <label for="rg">RG</label>
             <input required name="rg" mask="0.000.000" placeholder="0.000.000" type="text" [(ngModel)]="costumerModel.rg">
           </span> -->
-          <span class="input-cpf">
+          <!-- <span class="input-cpf">
             <label for="cpf">CPF</label>
             <input required name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" type="text" [(ngModel)]="costumerModel.cpf">
-          </span>
+          </span> -->
         </fieldset>
-        <fieldset>
+       <!--  <fieldset>
           <span class="CEPformGroup">
             <span class="input-cep">
               <label for="cep">CEP</label>
@@ -93,12 +93,12 @@
             <span class="input-uf">
               <label for="uf">UF</label>
               <select  name="uf" type="text"  [(ngModel)]="costumerModel.address.uf" class="form-select">
-                <!-- API estados -->
+       
                 <option *ngFor="let i of UF" [value]="i">{{i}}</option>
               </select>
             </span>
           </span>
-        </fieldset>
+        </fieldset> -->
 
         <span class="input-descricao">
           <label for="descricao">Descreva seu caso</label>

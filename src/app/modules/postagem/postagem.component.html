@@ -94,8 +94,8 @@ class="postReadWapper">
     {{PostReading.postDTO.subtitle}}
   </span>
 
-  <span (click)="share()" class="postIcons">
-    <mat-icon class="icon">share</mat-icon>
+  <span class="postIcons">
+    <st-inline-share-buttons  [config]="share('share')"></st-inline-share-buttons>
   </span>
 
   <article class="texto">
@@ -160,13 +160,15 @@ class="postCreateWapper">
 
   <article class="texto">
 
-    <angular-markdown-editor
+    <!-- <angular-markdown-editor
     [textareaId]="'editor1'"
     name="markdownText"
     [rows]="20"
     [options]="editorOptions"
     [(ngModel)]="markdownText">
     </angular-markdown-editor>
+ -->
+    <p-editor [(ngModel)]="markdownText" [style]="{ height: '320px' }" />
   </article>
   <span  (click)="createPost()" [ngbTooltip]="'Publicar'" class="primaryButton">
 

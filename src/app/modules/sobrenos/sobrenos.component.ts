@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { KeenSliderInstance } from 'keen-slider';
-import { MultCards } from 'src/app/models/cardContent';
+import { CardContent, MultCards } from 'src/app/models/cardContent';
 import KeenSlider from 'keen-slider';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, take } from 'rxjs'
 import { ImageLoaderService } from 'src/app/services/image.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sobrenos',
@@ -32,12 +33,13 @@ import { ImageLoaderService } from 'src/app/services/image.service';
 })
 export class SobrenosComponent implements AfterViewInit{
   msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.'
-
+  modalContent:CardContent = new CardContent()
   isLoading = true
 
   constructor(
     private router:Router,
-    private imageService:ImageLoaderService,) {
+    private imageService:ImageLoaderService,
+  private modalService:NgbModal) {
 
       this.loadingService()
      }
@@ -55,6 +57,18 @@ export class SobrenosComponent implements AfterViewInit{
       loadSubBreaking.unsubscribe()
     }
   })}
+
+  openModal(content:any,i:any){
+    this.modalContent.main = i.main
+    this.modalContent.header = i.header
+    this.modalContent.info = i.info
+    this.modalService.open(content,
+        {
+          modalDialogClass: 'custom-class',
+          scrollable:true
+        }
+      )
+  }
   ngAfterViewInit() {
 
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
@@ -83,35 +97,31 @@ export class SobrenosComponent implements AfterViewInit{
             {
               header:'./../../../assets/imgs/elenco/ThomasPhoto.jpg',
               main:'Thomas Crisóstomo',
-              footer:'Especialista x',
+              footer:'Advogado criminalista',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
+              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              info:'Graduado em Direito pela Faculdade de Olinda; licenciando em Ciências Sociais pela Universidade de Pernambuco, pós em Ciências Penais pela Escola Superior da Advocacia.'
             },
             {
-              header:'./../../../assets/imgs/elenco/ThomasPhoto.jpg',
-              main:'Thomas Crisóstomo',
-              footer:'Especialista x',
+              header:'./../../../assets/imgs/elenco/Ayanne.jpg',
+              main:'Ayanne Andrade Oliveira',
+              footer:'Especialita em Direito da família',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
+              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              info:'Advogada formada pela Universidade Católica de Pernambuco Pós-graduada em Direito de Família e Sucessões pela Escola Brasileira de Direito/SP Mediadora e Conciliadora formada pelo Tribunal de Justiça de Pernambuco'
             },
             {
-              header:'./../../../assets/imgs/elenco/ThomasPhoto.jpg',
-              main:'Thomas Crisóstomo',
-              footer:'Especialista x',
+              header:'./../../../assets/imgs/elenco/matheus.jpg',
+              main:'Matheus Souza',
+              footer:'Advogado',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
-            },
-            {
-              header:'./../../../assets/imgs/elenco/ThomasPhoto.jpg',
-              main:'Thomas Crisóstomo',
-              footer:'Especialista x',
-              type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png'
-            },
+              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              info:'Matheus Souza Lira da Silva, advogado formado pela AESO - Faculdades Integradas Barros Melo, Pós graduado em direito e processo do trabalho pela Faculdade CERS.'
+            }
           ],
         mode: 'free',
         loop: true,
-        perView: 4,
+        perView: 2,
         spacing: 15,
       }
 

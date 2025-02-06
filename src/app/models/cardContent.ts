@@ -14,6 +14,7 @@ export class CardContent{
   footer!:any
   type!:any
   bg!:string
+  info?:string
 }
 
 export class CardContentElenco{

@@ -12,8 +12,8 @@ export enum Env{
 }
 
 export enum API{
-  DEV = 'http://localhost:8080',
-  PROD = 'http://thom-api-env.us-east-1.elasticbeanstalk.com'
+  PROD = 'https://advapi-production.up.railway.app/contact',
+  //PROD = 'https://thom-api-env.us-east-1.elasticbeanstalk.com'
 }
 
 export class Config {

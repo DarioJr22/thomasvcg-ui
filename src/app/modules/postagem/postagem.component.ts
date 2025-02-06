@@ -13,12 +13,43 @@ import { User } from '../login/login.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ImageLoaderService } from 'src/app/services/image.service';
+import { InlineFollowButtonsConfig, InlineShareButtonsConfig } from 'sharethis-angular';
+const inlineShareButtonsConfig:InlineShareButtonsConfig = {
+  alignment: 'center', // alignment of buttons (left, center, right)
+  color: 'social', // set the color of buttons (social, white)
+  enabled: true, // show/hide buttons (true, false)
+  font_size: 16, // font size for the buttons
+  labels: 'cta', // button labels (cta, counts, null)
+  language: 'pt', // which language to use (see LANGUAGES)
+  networks: [
+    // which networks to include (see SHARING NETWORKS)
+    'whatsapp',
+    'linkedin',
+    'facebook',
+    'twitter'
+  ],
+  padding: 12, // padding within buttons (INTEGER)
+  radius: 4, // the corner radius on each button (INTEGER)
+  show_total: true,
+  size: 40, // the size of each button (INTEGER)
+
+  // OPTIONAL PARAMETERS
+
+  url: window.location.href, // (defaults to current url)
+  image: 'https://media.licdn.com/dms/image/D4D03AQGKKoWsExMXcg/profile-displayphoto-shrink_800_800/0/1694563177611?e=1718236800&v=beta&t=wzmESHXILy6fylqjL3VrFqhUIDdwZ5NYwdcps5QeiLc', // (defaults to og:image or twitter:image)
+  description: 'Confira o artigo pesquisando pelo titulo na página da url.', // (defaults to og:description or twitter:description)
+  title: 'asdasdas', // (defaults to og:title or twitter:title)
+  message: 'this.PostReading.postDTO.subtitle', // (only for email sharing)
+  subject: 'asdasdas', // (only for email sharing)
+};
+
 @Component({
   selector: 'tcv-postagem',
   templateUrl: './postagem.component.html',
   styleUrls: ['./postagem.component.scss']
 })
 export class PostagemComponent implements OnInit {
+  inlineShareButtonsConfig:InlineShareButtonsConfig = inlineShareButtonsConfig
   bsEditorInstance!: EditorInstance;
   operation:string = Operation.LIST
   isLoading = true
@@ -248,15 +279,64 @@ export class PostagemComponent implements OnInit {
     }
   }
 
-  share(){
-    window.navigator.share({
-    title: this.PostReading.postDTO.title,
-    text: 'Confira o artigo pesquisando pelo titulo na página da url.' ,
-    url: window.location.href,
+  shareFollow(){
+    const InlineFollowButtonsConfig:InlineFollowButtonsConfig = {
+      action: 'Siga-nos', // alignment of buttons (left, center, right)
+      action_enabled: true, // set the color of buttons (social, white)
+      enabled: true, // show/hide buttons (true, false)
+      alignment: 'center', // button labels (cta, counts, null)
+       // font size for the buttons
+      networks: [
+        // which networks to include (see SHARING NETWORKS)
+        'linkedin',
+        'instagram'
+      ],
+      profiles:{
+        instagram:'thomasvcg',
+        linkedin:'thomasvcg'
+      },
+      padding: 12, // padding within buttons (INTEGER)
+      radius: 4, // the corner radius on each button (INTEGER)
+      size: 40, // the size of each button (INTEGER)
 
-   })
-   .then(() => console.log('Conteúdo compartilhado com sucesso.'))
-   .catch((error) => console.error('Erro ao compartilhar:', error));
+      // OPTIONAL PARAMETERS
+
+      url: window.location.href, // (defaults to current url)
+
+  }
+  return InlineFollowButtonsConfig
+  }
+
+  share(string:'share'|'follow') {
+    const InlineShareButtonsConfig:InlineShareButtonsConfig = {
+      alignment: 'center', // alignment of buttons (left, center, right)
+      color: 'social', // set the color of buttons (social, white)
+      enabled: true, // show/hide buttons (true, false)
+      font_size: 16, // font size for the buttons
+      labels: 'cta', // button labels (cta, counts, null)
+      language: 'pt', // which language to use (see LANGUAGES)
+      networks: [
+        // which networks to include (see SHARING NETWORKS)
+        'whatsapp',
+        'linkedin',
+        'facebook',
+        'twitter'
+      ],
+      padding: 12, // padding within buttons (INTEGER)
+      radius: 4, // the corner radius on each button (INTEGER)
+      show_total:false,
+      size: 35, // the size of each button (INTEGER)
+
+      // OPTIONAL PARAMETERS
+
+      url: window.location.href, // (defaults to current url)
+      image: 'https://media.licdn.com/dms/image/D4D03AQGKKoWsExMXcg/profile-displayphoto-shrink_800_800/0/1694563177611?e=1718236800&v=beta&t=wzmESHXILy6fylqjL3VrFqhUIDdwZ5NYwdcps5QeiLc', // (defaults to og:image or twitter:image)
+      description: 'Confira o artigo pesquisando pelo titulo na página da url.', // (defaults to og:description or twitter:description)
+      title: this.PostReading.postDTO.title, // (defaults to og:title or twitter:title)
+      message: this.PostReading.postDTO.subtitle, // (only for email sharing)
+      subject: this.PostReading.postDTO.title, // (only for email sharing)
+    };
+    return InlineShareButtonsConfig
   }
 
   addtag(tag:string){

@@ -12,7 +12,7 @@ import { ImageLoaderService } from 'src/app/services/image.service';
 })
 export class FaleConoscoComponent implements OnInit {
  //
- isLoading = false
+ isLoading = true
   msgZap = '';
 
  contactModel:ContactDTO = {
@@ -64,6 +64,7 @@ constructor(
 }
   ngOnInit(): void {
     this.getUF()
+    this.loadingService()
     this.msgZap =`\n
     Contato feito pelo site !
     `
@@ -74,7 +75,7 @@ constructor(
       this.isLoading = false
     })
 
-    let loadSubBreaking = this.imageService.timeBreakingImages(300).subscribe(n => {
+    let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
     if(n === 1){
       this.isLoading = false
       loadSubBreaking.unsubscribe()

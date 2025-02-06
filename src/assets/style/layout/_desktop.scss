@@ -41,6 +41,18 @@ div.mainWrapperLogin{
   align-items: center;
   justify-content: center;
 }
+
+
+div.mainWrapperNotFound{
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: url(../../../assets/imgs/backgrounds/BG_Home.png) no-repeat center center;
+  background-size: cover;
+}
 /* Titulos */
 
  h1,h2,h3,h4,h5,h6,label{
@@ -723,6 +735,7 @@ h2,h3,h4,h5,h6{
       row-gap: 2rem;
       column-gap: 2rem;
       margin: 2rem;
+      padding: 0;
       li.postWapper{
         list-style: none;
         width: 572px;

@@ -4,6 +4,7 @@ import { SobrenosComponent } from './sobrenos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SobreNosRoutingModule } from './sobrenos.routing.module';
 import { RouterModule } from '@angular/router';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     CommonModule,
     SobreNosRoutingModule,
-    RouterModule
+    RouterModule,
+    NgbTooltipModule
   ]
 })
 export class SobreNosModule { }

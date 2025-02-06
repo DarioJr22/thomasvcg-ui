@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 const routes: Routes = [
 {
@@ -28,7 +29,10 @@ const routes: Routes = [
   path:'faleconosco',
   loadChildren:()=> import('./modules/faleconosco/faleconosco.module').then(x => x.FaleconoscoModule)
 },
-
+{
+  path: '**', pathMatch: 'full',
+  component:NotfoundComponent
+},
 ];
 
 @NgModule({

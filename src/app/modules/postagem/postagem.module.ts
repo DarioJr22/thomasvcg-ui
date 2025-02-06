@@ -11,7 +11,8 @@ import { AngularMarkdownEditorModule, EditorOption } from 'angular-markdown-edit
 import { MarkdownModule,  MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import '@github/markdown-toolbar-element'
 import { CookieService } from 'ngx-cookie-service';
-
+import { SharethisAngularModule } from 'sharethis-angular';
+import { EditorModule } from 'primeng/editor';
 
  export const config: EditorOption = {
 
@@ -44,7 +45,9 @@ import { CookieService } from 'ngx-cookie-service';
     MatSelectModule,
     FormsModule,
     AngularMarkdownEditorModule.forRoot(config),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    SharethisAngularModule,
+    EditorModule
   ],
 
   schemas:[

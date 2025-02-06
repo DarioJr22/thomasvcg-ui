@@ -612,10 +612,11 @@
       row-gap: 2rem;
       column-gap: 2rem;
       margin: 2rem;
+      padding: 0;
       li.postWapper{
         justify-self: center;
         list-style: none;
-        width: 470px;
+        width: 92vw;
         height: 318px;
         border-radius: 20px;
         padding: 2rem;
@@ -638,7 +639,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
-            font-size: 32px;
+            font-size: 22px;
             font-weight: 600;
             color: #fff;
           }
@@ -647,7 +648,7 @@
 
         span.postSubTitle{
           width: 100%;
-          border-radius: 24px;
+          border-radius: 17px;
           background: #111111;
           padding: .5rem;
           display: flex;
@@ -656,7 +657,7 @@
           justify-content: center;
           cursor: pointer;
           p{
-            font-size: 24px;
+            font-size: 17px;
           font-weight: 600;
           color: #d2d2d2;
           white-space: nowrap;
@@ -764,7 +765,7 @@
       h1{
 
         color: #fff;
-        font-size: 68px;
+        font-size: 32px;
         font-weight: 500;
         margin-bottom: 1.5rem;
         text-align: flex-start;
@@ -775,7 +776,7 @@
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      font-size: 28px;
+      font-size: 18px;
       font-weight: 400;
       color: #d2d2d2;
       text-decoration: underline;
