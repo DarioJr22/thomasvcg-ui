@@ -129,9 +129,7 @@ sendContact(){
   if(
     this.costumerModel.costumerName != ''  &&
     this.costumerModel.email != '' &&
-    this.costumerModel.contact != '' &&
-    this.costumerModel.address.cep != '' &&
-    !this.costumerModel.address.invalidCep){
+    this.costumerModel.contact != ''){
 
       this.postCostumer()
     }else{

@@ -12,7 +12,7 @@ export enum Env{
 }
 
 export enum API{
-  PROD = 'https://advapi-production.up.railway.app/contact',
+  PROD = 'https://advapi-production.up.railway.app',
   //PROD = 'https://thom-api-env.us-east-1.elasticbeanstalk.com'
 }
 
