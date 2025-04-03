@@ -253,6 +253,7 @@ overflow: hidden;
 
     .iconElenco{
       border-radius: 16px;
+      position: absolute;
     }
   }
 
@@ -375,4 +376,15 @@ overflow: hidden;
   .hover-underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+
+::ng-deep{
+    mat-icon.mat-icon{
+      color: white;
+       display: absolute;
+              position: absolute;
+              top: 30px;
+              left: 30px;
+    }
   }

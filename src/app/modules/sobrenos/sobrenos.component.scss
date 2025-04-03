@@ -37,7 +37,7 @@ cursor: pointer;
 
 
 .slideWrapper{
-width: 90%;
+width: 100%;
 
 overflow: hidden;
 }
@@ -110,12 +110,20 @@ overflow: hidden;
 
   .iconElencoWrapper{
     border-radius: 16px;
-
+    padding: 1rem;
     justify-content: center;
     display: flex;
 
     .iconElenco{
       border-radius: 16px;
+      position: relative;
+      left: 40px;
+      top: 10px;
+      color: #fff;
+    }
+
+    img{
+      border-radius: 10px;
     }
   }
 

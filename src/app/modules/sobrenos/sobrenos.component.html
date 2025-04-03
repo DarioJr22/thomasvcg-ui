@@ -18,7 +18,7 @@
       </p>
     </article>
     <span>
-      <img src="./../../../assets/imgs/visualComponents/Thomas Ceisóstomo.png" alt="ThomasCrisostomo">
+      <img src="https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/Thomas%20Ceis%C3%B3stomo.png?updatedAt=1738792247926" alt="ThomasCrisostomo">
     </span>
   </section>
 
@@ -30,24 +30,19 @@
       <h1>Parceiros</h1>
     </header>
     <div class="slideWrapper">
-      <div class="keen-slider" #sliderRef>
+      <!--  class="keen-slider" #sliderRef -->
+      <div class="slideInsideWrapper">
         <div
           *ngFor="let i of dadosAreaAtuacao.content; index as y"
           [class]="'keen-slider__slide cardElenco'">
           <span class="iconElencoWrapper">
             <mat-icon
+            class="iconElenco"
             (click)="openModal(content,i)"
-            style="
-              color: white;
-              display: absolute;
-              position: absolute;
-              top: 30px;
-              left: 30px;"
               ngbTooltip="Mais informações">info</mat-icon>
             <img
-            class="iconElenco"
-            width="361px"
-            height="580px"
+            width="300px"
+            height="500px"
             [src]="i.header" alt="icon">
           </span>
 

@@ -52,7 +52,7 @@ export class SobrenosComponent implements AfterViewInit{
     })
 
     let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
-    if(n === 1){
+    if(n === 5){
       this.isLoading = false
       loadSubBreaking.unsubscribe()
     }
@@ -95,27 +95,27 @@ export class SobrenosComponent implements AfterViewInit{
         type: 'ELENCO',
         content: [
             {
-              header:'./../../../assets/imgs/elenco/ThomasPhoto.jpg',
+              header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/Elenco/ThomasPhoto.jpg?updatedAt=1738792192963',
               main:'Thomas Crisóstomo',
               footer:'Advogado criminalista',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/AreaAruacao1.png?updatedAt=1738792242806',
               info:'Graduado em Direito pela Faculdade de Olinda; licenciando em Ciências Sociais pela Universidade de Pernambuco, pós em Ciências Penais pela Escola Superior da Advocacia.'
             },
             {
-              header:'./../../../assets/imgs/elenco/Ayanne.jpg',
+              header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/Elenco/Ayanne.jpg?updatedAt=1738792169315',
               main:'Ayanne Andrade Oliveira',
               footer:'Especialita em Direito da família',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/AreaAruacao1.png?updatedAt=1738792242806',
               info:'Advogada formada pela Universidade Católica de Pernambuco Pós-graduada em Direito de Família e Sucessões pela Escola Brasileira de Direito/SP Mediadora e Conciliadora formada pelo Tribunal de Justiça de Pernambuco'
             },
             {
-              header:'./../../../assets/imgs/elenco/matheus.jpg',
+              header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/Elenco/matheus.jpg?updatedAt=1738792168069',
               main:'Matheus Souza',
               footer:'Advogado',
               type:'ELENCO',
-              bg:'./../../../assets/imgs/visualComponents/AreaAruacao1.png',
+              bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/AreaAruacao1.png?updatedAt=1738792242806',
               info:'Matheus Souza Lira da Silva, advogado formado pela AESO - Faculdades Integradas Barros Melo, Pós graduado em direito e processo do trabalho pela Faculdade CERS.'
             }
           ],

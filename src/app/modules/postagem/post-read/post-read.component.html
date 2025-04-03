@@ -1,0 +1,27 @@
+<!-- post-read.component.html -->
+<section *ngIf="postDTO" class="postReadWapper">
+    <span class="backHeader">
+      <mat-icon (click)="deletePost(postDTO.id)" *ngIf="isLoggedIn" [ngbTooltip]="'Excluir post'" class="icon">delete</mat-icon>
+      <mat-icon class="icon" [ngbTooltip]="'Voltar'" routerLink="/artigos">arrow_back</mat-icon>
+    </span>
+  
+    <span class="tagWrapper">
+      <span class="tag" *ngFor="let tag of postDTO.tags">{{tag}}</span>
+    </span>
+  
+    <header class="postagemTitle">
+      <h1>{{postDTO.title}}</h1>
+    </header>
+  
+    <span class="postSubTitle">
+      {{postDTO.subtitle}}
+    </span>
+
+    <span class="postIcons">
+      <st-inline-share-buttons [config]="share('share')"></st-inline-share-buttons>
+    </span>
+
+    <article class="texto">
+      <markdown [data]="postDTO.content"></markdown>
+    </article>
+  </section>

@@ -1,0 +1,46 @@
+<!-- post-list.component.html -->
+<section class="postListWapper">
+    <header class="postagemTitle">
+      <span class="title">
+        <h1>Artigos</h1>
+        <mat-icon (click)="validateUser(PostReading,content2)" class="icon">edit</mat-icon>
+      </span>
+  
+      <span class="filter">
+        <input type="text" [(ngModel)]="searchFilter.title" 
+               (keyup)="aplicarFiltro()" 
+               placeholder="Título da postagem">
+      </span>
+    </header>
+  
+    <ul class="PostList">
+      <li class="postWapper" *ngFor="let postagem of FiteredPosts">
+        <span (click)="navigateToPost(postagem.postDTO.id)" class="postTitle">
+          <h3>{{postagem.postDTO.title}}</h3>
+        </span>
+        <span class="postSubTitle">
+          <p>{{postagem.postDTO.subtitle}}</p>
+        </span>
+        <p class="postData">{{postagem.postDTO.date | date:'dd/MM/yyyy'}}</p>
+        <button class="readMore" (click)="navigateToPost(postagem.postDTO.id)">Ler Mais</button>
+      </li>
+    </ul>
+  </section>
+
+  <ng-template #content2 let-modal>
+    <div style="background-color:#222; color: white" class="modal-header">
+      <h2 class="modal-title" id="modal-basic-title">Login</h2>
+      <mat-icon style="color: #fff; cursor: pointer;" aria-label="Close" (click)="modal.dismiss(false)" class="mat-18">close</mat-icon>
+    </div>
+    <div style="background-color:#222; color: white" class="modal-body">
+      <!-- Formulário de login -->
+      <div class="loginform">
+        <input type="text" required [(ngModel)]="user.email" name="username" placeholder="Email">
+        <input type="password" required [(ngModel)]="user.password" name="password"  placeholder="Senha">
+      </div>
+    </div>
+    <div style="background-color:#222; color: white;justify-content: center;" class="modal-footer">
+      <button type="button" class="primaryButton" (click)="modal.close(true)">Login</button>
+      <button type="button" class="primaryButton" (click)="modal.close(false)">Fechar</button>
+    </div>
+  </ng-template>

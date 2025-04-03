@@ -19,7 +19,7 @@ constructor(  private imageService:ImageLoaderService
     })
 
     let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
-    if(n === 1){
+    if(n === 5){
       this.isLoading = false
       loadSubBreaking.unsubscribe()
     }

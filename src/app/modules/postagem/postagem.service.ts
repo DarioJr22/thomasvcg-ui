@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, throwError } from "rxjs";
 import { API } from "../../models/config";
+import { Post } from "src/app/models/Post";
 
 
 @Injectable({
@@ -9,6 +10,13 @@ import { API } from "../../models/config";
 })
 
 export class PostService {
+
+  private isLoading = new BehaviorSubject<boolean>(false);
+  isLoading$ = this.isLoading.asObservable();
+
+  isLoadingUpdate(value:boolean){
+    this.isLoading.next(value);
+  }
 
   public httpOptions = {
     headers: new HttpHeaders({
@@ -31,8 +39,12 @@ export class PostService {
   };
 
   getArticle(){
-    return this.http.get(`${API.PROD}/post`,this.httpOptions);
+    return this.http.get<Post[]>(`${API.PROD}/post`,this.httpOptions);
   };
+
+  getArticleById(id:number){
+    return this.http.get(`${API.PROD}/post/${id}`)
+  }
 
   getTags(){
     return this.http.get(`${API.PROD}/post/tags`,this.httpOptions)
@@ -51,6 +63,10 @@ export class PostService {
       newTag:newTag,
       oldTag:oldTag
     },this.httpOptions)
+  }
+
+  deletePostByID(id:number){
+    return this.http.delete(`${API.PROD}/post/${id}`)
   }
 
   deleteTags(tag:string){

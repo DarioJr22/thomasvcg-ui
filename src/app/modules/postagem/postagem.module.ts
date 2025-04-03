@@ -13,6 +13,9 @@ import '@github/markdown-toolbar-element'
 import { CookieService } from 'ngx-cookie-service';
 import { SharethisAngularModule } from 'sharethis-angular';
 import { EditorModule } from 'primeng/editor';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostReadComponent } from './post-read/post-read.component';
+import { PostCreateComponent } from './post-create/post-create.component';
 
  export const config: EditorOption = {
 
@@ -35,7 +38,7 @@ import { EditorModule } from 'primeng/editor';
 } */
 
 @NgModule({
-  declarations: [PostagemComponent],
+  declarations: [PostagemComponent, PostListComponent, PostReadComponent, PostCreateComponent],
   imports: [
     CommonModule,
     SharedModule,

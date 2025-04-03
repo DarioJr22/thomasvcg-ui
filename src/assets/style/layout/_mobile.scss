@@ -518,7 +518,11 @@
                 }
               }
             }
-
+          .slideInsideWrapper{
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+          }
   }
 
 
@@ -594,7 +598,7 @@
       h1{
         font-size: 63px;
         font-weight: 600;
-        margin-bottom: 1.5rem;
+        margin-bottom:0 ;
         text-align: start;
       }
 
@@ -760,14 +764,15 @@
     header.postagemTitle{
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
       width: 100%;
+      background: #161616;
+      border-radius: 0.5rem;  
+      padding: 1rem;   
       h1{
-
-        color: #fff;
-        font-size: 32px;
+        font-size: 42px;
         font-weight: 500;
-        margin-bottom: 1.5rem;
         text-align: flex-start;
       }
     }
@@ -776,10 +781,13 @@
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      font-size: 18px;
+      font-size: 30px;
       font-weight: 400;
       color: #d2d2d2;
       text-decoration: underline;
+      padding: 1rem;   
+      background: #161616;
+      border-radius: 0.5rem;  
     }
 
     span.postIcons{
@@ -799,12 +807,17 @@
       font-weight: 400;
       margin: 1.5rem;
       text-align: flex-start;
+      padding: 1rem;   
+      background: #161616;
+      border-radius: 0.5rem;  
+      padding: 1rem; 
     }
 
     span.backHeader{
       width: 100%;
       display: flex;
       justify-content: flex-end;
+      column-gap: 1rem;
       .icon{
         display: flex;
         justify-content: center;

@@ -1,0 +1,76 @@
+<!-- post-create.component.html -->
+<section class="postCreateWapper">
+    <span class="backHeader">
+      <mat-icon class="icon" [ngbTooltip]="'Voltar'"  routerLink="/artigos">arrow_back</mat-icon>
+    </span>
+  
+    <span *ngIf="postDTO.tags.length > 0" class="tagWrapper">
+      <span class="tag" *ngFor="let tag of postDTO.tags">
+        {{tag}}
+        <mat-icon (click)="removeTag(tag)">close</mat-icon>
+      </span>
+    </span>
+  
+    <header class="postagemTitle">
+      <span>
+        <label>Título</label>
+        <input type="text" [(ngModel)]="postDTO.title">
+      </span>
+  
+      <span class="postSubTitle">
+        <label>Subtítulo</label>
+        <input type="text" [(ngModel)]="postDTO.subtitle">
+      </span>
+  
+      <span class="tagInput">
+        <label>Tags</label>
+        <span class="d-flex">
+          <select #tagsInput (click)="addtag(tagsInput.value)" id="tags" class="w-100" [multiple]="true">
+              <option *ngFor="let name of tags" [value]="name">
+                {{name}}
+              </option>
+          </select>
+          <mat-icon class="tagManager" (click)="modalTagsManager(content)" [ngbTooltip]="'Gerenciar tags'">settings</mat-icon>
+        </span>
+  
+      </span>
+    </header>
+  
+    <article class="texto">
+      <p-editor [(ngModel)]="markdownText" [style]="{ height: '820px' }"></p-editor>
+    </article>
+  
+    <button (click)="createPost()" class="primaryButton">
+      <mat-icon>publish</mat-icon> Publicar
+    </button>
+  </section>
+
+  <ng-template #content let-modal>
+    <div style="background-color:#222; color: white" class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Gerenciador de tags</h4>
+      <mat-icon style="color: #fff; cursor: pointer;" aria-label="Close" (click)="modal.dismiss(false)" class="mat-18">close</mat-icon>
+    </div>
+    <div style="background-color:#222; color: white" class="modal-body">
+      <!-- Listage, Deleção e inclusão de tags -->
+      <table class="table-tagmanager" aria-labelledby="Tabela de gerenciamento de tags">
+        <th>
+          TAG
+        </th>
+        <th colspan="2">
+          AÇÕES
+        </th>
+        <tr *ngFor="let data of tagHandler">
+          <td *ngIf="data.operation == 'LIST'">{{data.tag}}</td>
+          <td *ngIf="data.operation == 'LIST'"><mat-icon (click)="editToggle(data)" ngbTooltip="Editar tag">edit</mat-icon></td>
+          <td *ngIf="data.operation == 'LIST'"><mat-icon (click)="deleteTag(data.tag)" ngbTooltip="Deletar tag">delete</mat-icon></td>
+          <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><input type="text" [(ngModel)]="data.tag"></td>
+          <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><mat-icon ngbTooltip="Editar tag" (click)="save(data)">done</mat-icon></td>
+          <td *ngIf="data.operation == 'UPDATE' || data.operation == 'CREATE'"><mat-icon ngbTooltip="Cancelar edição" (click)="editToggle(data)">cancel</mat-icon></td>
+        </tr>
+      </table>
+      <span (click)="create()" class="addTag"><mat-icon>add</mat-icon></span>
+    </div>
+    <div style="background-color:#222; color: white" class="modal-footer">
+      <button type="button" class="primaryButton" (click)="modal.close(true)">Fechar</button>
+    </div>
+  </ng-template>

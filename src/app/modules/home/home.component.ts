@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
 
       let loadSubBreaking = this.imageService.timeBreakingImages(500).subscribe(n => {
-      if(n === 1){
+      if(n === 5){
         this.isLoading = false
         loadSubBreaking.unsubscribe()
       }
@@ -71,53 +71,53 @@ export class HomeComponent implements OnInit {
     type: 'ATUACAO',
     content: [
         {
-          header:'./../../../assets/imgs/icons/criminal.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/criminal.svg?updatedAt=1739478701806',
           main:'Criminal',
           footer:'Atuamos de forma preventiva, a fim de evitar que você venha a ser processado criminalmente; bem como atuamos na defesa dos seus interesses, durante a investigação, quanto durante o processo',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/criminal.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/criminal.svg?updatedAt=1738792254490'
         },
         {
-          header:'./../../../assets/imgs/icons/familia.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/familia.svg?updatedAt=1739478702009',
           main:'Família',
           footer:'Situações envolvendo relações familiares como divórcios, guarda, alimentos, etc. Adotamos uma abordagem inicial conciliatória a fim de assegurar serenidade emocional para os envolvidos e rapidez no processo',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/familia.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/familia.svg?updatedAt=1738792257864'
         },
         {
-          header:'./../../../assets/imgs/icons/previdenciario.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/previdenciario.svg?updatedAt=1739478703672',
           main:'Previdenciário',
           footer:'Situações envolvendo benefícios junto ao INSS e, caso necessário, recorrendo à Justiça',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/previdenciario.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/previdenciario.svg?updatedAt=1738792255687'
         },
         {
-          header:'./../../../assets/imgs/icons/eleitoral.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/eleitoral.svg?updatedAt=1739478701645',
           main:'Eleitoral',
           footer:'Situações envolvendo disputas eleitorais, tanto na defesa, quanto na acusação. Também fazemos assessoria preventiva a fim de evitar maiores gastos financeiros e riscos junto à Justiça Eleitoral.',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/eleitoral.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/eleitoral.svg?updatedAt=1738792256048'
         },
         {
-          header:'./../../../assets/imgs/icons/trabalho.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/trabalho.svg?updatedAt=1739478705054',
           main:'Trabalhista',
           footer:'Situações envolvendo conflitos no emprego, readmissões, indenizações etc. Igualmente atuamos junto às empresas de forma preventiva e contenciosa.',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/trabalhista.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/trabalhista.svg?updatedAt=1738792261204'
         },
         {
-          header:'./../../../assets/imgs/icons/Administrativo.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/Administrativo.svg?updatedAt=1739478706388',
           main:'Administrativo',
           footer:'Situações envolvendo o governo e seus funcionários, bem como particulares, tais como enquadramentos profissionais, garantias funcionais, concursos, etc.',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/administrativo.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/administrativo.svg?updatedAt=1738792260846'
         },
         {
-          header:'./../../../assets/imgs/icons/civil.svg',
+          header:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/icons/civil.svg?updatedAt=1739478701649',
           main:'Civil',
           footer:'Situações da vida cotidiana, como cobranças, alugueis, vendas, direitos de uso, direitos sobre imóveis, relações em condomínios, etc.',
           type:'ATUACAO',
-          bg:'./../../../assets/imgs/visualComponents/civil.svg'
+          bg:'https://ik.imagekit.io/b44ooyk8l/ThomasVcg/ElementosVisuais/civil.svg?updatedAt=1738792256513'
         }
       ],
     mode: 'free',

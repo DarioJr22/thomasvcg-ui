@@ -14,6 +14,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ImageLoaderService } from 'src/app/services/image.service';
 import { InlineFollowButtonsConfig, InlineShareButtonsConfig } from 'sharethis-angular';
+import { Subscription } from 'rxjs';
 const inlineShareButtonsConfig:InlineShareButtonsConfig = {
   alignment: 'center', // alignment of buttons (left, center, right)
   color: 'social', // set the color of buttons (social, white)
@@ -53,9 +54,9 @@ export class PostagemComponent implements OnInit {
   bsEditorInstance!: EditorInstance;
   operation:string = Operation.LIST
   isLoading = true
+  private subscription!:Subscription;
   editTempTag = ''
   conteudoDefault = ''
-
   Post:Post[] = []
   FiteredPosts:Post[] = [];
   searchFilter:any = {
@@ -68,7 +69,7 @@ export class PostagemComponent implements OnInit {
   markdownText!: string
   PostReading:Post = {
     postDTO:{
-      id:'',
+      id:0,
       title:'',
       subtitle:'',
       content:'',
@@ -95,6 +96,8 @@ export class PostagemComponent implements OnInit {
   }
 
 
+
+
   constructor(
     private auth:AngularFireAuth,
     private postService:PostService,
@@ -112,14 +115,17 @@ export class PostagemComponent implements OnInit {
       })
 
       let loadSubBreaking = this.imageService.timeBreakingImages(1000).subscribe(n => {
-      if(n === 1){
+      if(n === 5){
         this.isLoading = false
         loadSubBreaking.unsubscribe()
       }
     })}
+
+
   ngOnInit(): void {
     this.getPost()
     this.getTags()
+    this.updateLoading()
     this.editorOptions = {
       autofocus: false,
       iconlibrary: 'fa',
@@ -129,31 +135,17 @@ export class PostagemComponent implements OnInit {
 
     };
     this.markdownText = this.conteudoDefault
+
+
   }
 
-  //Task - Validar o usuário antes de fazer o post
-  validateUser(post:Post,modalContent:any){
-    //Verifica se o usuário já logou
-
-
-    let logged = false
-    this.user.email = this.cookie.get('email')
-    this.user.password = this.cookie.get('senha')
-
-      this.auth
-      .signInWithEmailAndPassword(this.user.email, this.user.password)
-      .then(()=>{
-        //Caso esteja, então segue pra criar o post
-        this.changeOp('CREATE',post)
-      })
-      .catch((error) => {
-        //se o bonito não tiver logado, então ele abre o modal
-        this.openModal(post,modalContent)
-      })
-    return logged
-    //Abre o modal para fazer o login do usuário
-
+  updateLoading(){
+    this.subscription = this.postService.isLoading$.subscribe((value)=>{
+      this.isLoading = value
+      console.log(this.isLoading)
+    })
   }
+  
 
   //Modal service
   openModal(post:any,content:any){
@@ -206,6 +198,8 @@ export class PostagemComponent implements OnInit {
       this.markdownService.highlight();
     });
   }
+  
+  
 
   getPost(){
     this.isLoading = true
@@ -247,7 +241,7 @@ export class PostagemComponent implements OnInit {
   buildForm(){
     this.PostReading ={
       postDTO:{
-        id:'',
+        id:0,
         title:'',
         subtitle:'',
         content:'',
@@ -267,7 +261,7 @@ export class PostagemComponent implements OnInit {
     } else if(op == 'LIST'){
       this.PostReading = {
         postDTO:{
-          id:'',
+          id:0,
           title:'',
           subtitle:'',
           content:'',
