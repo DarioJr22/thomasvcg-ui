@@ -1,7 +1,7 @@
 import { Operation } from './Operation';
 export interface Post{
   postDTO:{
-    id:string;
+    id:number;
     title:string;
     subtitle:string;
     content:string;
