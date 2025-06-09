@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   //Falar com thomas sobre mensagem automática na tela inicial
   msg = 'Olá, gostaria de saber mais sobre os serviços do escritório.\n'
   frasesInicio = [
-    "Prisões em flangrante",
+    "Prisões em flagrante",
     "Divórcios",
     "Aposentadorias",
     "Pensão por morte",
